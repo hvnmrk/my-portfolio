@@ -15,31 +15,37 @@
     <div class="scroll-progress"></div>
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-
     <header>
         <div class="container nav-container">
             <a href="#home" class="logo hover-target">
                 <img src="logo.png" alt="Mark Tomaquin Logo">
             </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#about" class="hover-target">About</a></li>
-                    <li><a href="#experience" class="hover-target">Experience</a></li>
-                    <li><a href="#works" class="hover-target">Works</a></li>
-                    <li><a href="#certificates" class="hover-target">Certificates</a></li>
-                    <li><a href="#resume" class="hover-target">Resume</a></li>
-                    <li><a href="#contact" class="hover-target">Contact</a></li>
-                    <li>
-                        <button id="theme-toggle" class="hover-target"
-                            style="background: none; border: none; color: var(--text-primary); font-size: 1.2rem; cursor: pointer;">
-                            <span class="theme-icon">☼</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+
+            <!-- THE CURE: Group menu items and control buttons together -->
+            <div class="nav-right-group">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#about" class="hover-target">About</a></li>
+                        <li><a href="#experience" class="hover-target">Experience</a></li>
+                        <li><a href="#works" class="hover-target">Works</a></li>
+                        <li><a href="#certificates" class="hover-target">Certificates</a></li>
+                        <li><a href="#resume" class="hover-target">Resume</a></li>
+                        <li><a href="#contact" class="hover-target">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="nav-right-controls">
+                    <button id="theme-toggle" class="hover-target" aria-label="Toggle Theme"
+                        style="background: none; border: none; color: var(--text-primary); font-size: 1.2rem; cursor: pointer;">
+                        <span class="theme-icon">☼</span>
+                    </button>
+                    <button class="menu-toggle hover-target" aria-label="Toggle Menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
-
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
@@ -74,9 +80,9 @@
                 <h2 class="section-title reveal">01 / Identity</h2>
                 <div class="about-grid reveal">
                     <div class="about-main-content">
-                        <p class="about-bio">I am a digital creative focused on crafting compelling visual narratives.
-                            Whether I'm designing striking graphics, building brand identities, or editing dynamic video
-                            content, my goal is to ensure every pixel and every frame serves a distinct purpose.</p>
+                        <p class="about-bio">I'm an IT student passionate about graphic design and video editing.
+                            Whether I'm designing a brand identity or cutting a video reel, I focus on making sure every
+                            single detail has a purpose.</p>
                         <div class="education-container">
                             <h3 class="sub-heading">/ Academic Foundation</h3>
                             <div class="edu-timeline">
@@ -511,10 +517,8 @@
                         <h3 class="download-card-title">View Resume</h3>
                         <p class="download-card-desc">Access the full, comprehensive copy containing detailed pipeline
                             processes and workflow breakdowns.</p>
-                        <!-- Inserted your Google Docs link here -->
-                        <a href="https://docs.google.com/document/d/10f1Wgao0RR8GMOBa8PI4tPElMwUmHW5-02g3Ktj0zHk/edit?usp=drive_web"
+                        <a href="https://docs.google.com/document/d/10f1Wgao0RR8GMOBa8PI4tPElMwUmHW5-02g3Ktj0zHk/edit?usp=sharing"
                             target="_blank" class="hover-target download-action-btn">
-                            <!-- Changed the SVG to an "external link" icon -->
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>

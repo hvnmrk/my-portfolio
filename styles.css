@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. Root Variables & Theme Palettes
+   ========================================================================== */
 :root {
     /* Dark Mode Defaults */
     --bg-dark: #030305;
@@ -14,49 +17,20 @@
 
 [data-theme="light"] {
     /* Sophisticated Light Mode Palette */
-    --bg-dark: #f8f9fa;
-    /* Off-white background */
+    --bg-dark: linear-gradient(135deg, #f0f2f5 0%, #e6e9ef 100%);
     --bg-card: #ffffff;
-    /* Pure white cards for depth */
-    --text-primary: #1a1a1a;
-    /* Soft black instead of pure #000 */
-    --text-muted: #555555;
-    /* Easier to read on light */
-
-    /* New sophisticated accent colors */
+    --text-primary: #0f172a;
+    --text-muted: #475569;
     --accent-cyan: #007d85;
-    /* Deep Teal */
     --accent-magenta: #c02645;
-    /* Muted Berry */
-
-    /* Subtle UI accents */
     --ui-border: rgba(0, 0, 0, 0.08);
     --marquee-border: rgba(0, 0, 0, 0.08);
     --timeline-line: rgba(0, 0, 0, 0.12);
-
-    /* Depth */
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* Base Styles & Depth Implementation */
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
-    transition: background-color var(--transition), color var(--transition);
-}
-
-.featured-card,
-.exp-card,
-.mock-terminal,
-.secure-contact-form {
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--marquee-border);
-}
-
-/* Add remaining styles from styles_16.css here... */
-
 /* ==========================================================================
-   2. Global Resets
+   2. Global Resets & Structural Layouts
    ========================================================================== */
 * {
     margin: 0;
@@ -77,6 +51,19 @@ body {
     transition: background-color var(--transition), color var(--transition);
 }
 
+[data-theme="light"] body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.03;
+    z-index: -1;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -91,8 +78,35 @@ body {
     color: var(--accent-cyan);
 }
 
+.section-title {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--timeline-line);
+}
+
+/* Component Contrast Cards */
+.featured-card,
+.exp-card,
+.mock-terminal,
+.secure-contact-form {
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--marquee-border);
+}
+
+[data-theme="light"] .featured-card,
+[data-theme="light"] .exp-card,
+[data-theme="light"] .mock-terminal {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
 /* ==========================================================================
-   3. Interactive Engine (Cursor, Motion, Nav)
+   3. Interactive Engine (Cursor & Global Header Controls)
    ========================================================================== */
 .reveal {
     opacity: 0;
@@ -135,6 +149,7 @@ body {
     border-color: transparent;
 }
 
+/* Header & Shared Right Alignment Engine */
 header {
     position: fixed;
     top: 0;
@@ -145,35 +160,38 @@ header {
     transition: background-color 0.6s, border-color 0.6s;
 }
 
-[data-theme="light"] header {
-    mix-blend-mode: normal;
-    background-color: rgba(248, 249, 250, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 10000 !important;
+    position: relative;
+}
+
 .logo {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    /* Aligns the image to the left instead of center */
     width: 60px;
-    /* Reduced from 120px */
     height: 40px;
-    /* Keeps the container height consistent */
 }
 
 .logo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* Ensures the logo scales down without stretching */
     display: block;
 }
 
@@ -196,18 +214,41 @@ header {
     color: var(--accent-cyan);
 }
 
-.section-title {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: clamp(30px, 5vw, 50px);
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--timeline-line);
+/* Custom Interactive Rounded Theme Button Frame */
+#theme-toggle {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px !important;
+    border: 1px solid var(--marquee-border) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    transition: var(--transition);
+}
+
+#theme-toggle:hover {
+    border-color: var(--accent-cyan) !important;
+    color: var(--accent-cyan) !important;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px;
+    transition: var(--transition);
+}
+
+.menu-toggle:hover {
+    color: var(--accent-cyan);
 }
 
 /* ==========================================================================
-   4. Hero & Glitch
+   4. Hero Section & Cyber Glitch
    ========================================================================== */
 .hero {
     min-height: 100vh;
@@ -260,6 +301,12 @@ header {
     width: 100%;
     height: 100%;
     background: var(--bg-dark);
+}
+
+[data-theme="light"] .glitch-text::before,
+[data-theme="light"] .glitch-text::after {
+    background: transparent !important;
+    color: var(--text-primary);
 }
 
 .glitch-text::before {
@@ -358,9 +405,21 @@ header {
     transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.3s;
 }
 
+[data-theme="light"] .magnetic-btn {
+    color: #1a1a1a !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
 .magnetic-btn:hover {
     background-color: var(--text-primary);
     color: var(--bg-dark);
+}
+
+[data-theme="light"] .magnetic-btn:hover {
+    background-color: #0f766e !important;
+    color: #ffffff !important;
+    border-color: #0f766e !important;
+    opacity: 1 !important;
 }
 
 .btn-text {
@@ -369,7 +428,7 @@ header {
 }
 
 /* ==========================================================================
-   5. About, Timeline & Marquee
+   5. About Identity, Academic History & Ticker Marquee
    ========================================================================== */
 .about-grid {
     display: grid;
@@ -572,13 +631,12 @@ header {
 }
 
 /* ==========================================================================
-   6. RESPONSIVE WORKS GRID (No Carousel)
+   6. Portfolio Grid Components (Adaptive Carousels)
    ========================================================================== */
 .horizontal-heading-pad {
     margin-bottom: 20px !important;
 }
 
-/* The standard grid for Systems, Games, Videos */
 .works-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -586,7 +644,6 @@ header {
     margin-bottom: 50px;
 }
 
-/* Slightly tighter grid specifically for vertical posters */
 .posters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -594,7 +651,6 @@ header {
     margin-bottom: 50px;
 }
 
-/* Solid, Space-Saving Cards */
 .featured-card {
     background: var(--bg-card);
     border: 1px solid var(--marquee-border);
@@ -707,8 +763,99 @@ header {
     font-family: monospace;
 }
 
+/* Featured Award Blueprint Node Custom Highlighting */
+.award-card {
+    border: 1px solid var(--accent-cyan) !important;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.02) 0%, var(--bg-card) 100%) !important;
+}
+
+.award-card .card-role {
+    color: var(--accent-cyan) !important;
+    font-weight: bold;
+}
+
+.tags span {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-right: 10px;
+    background-color: #1a1a1a;
+    color: #888;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: none;
+}
+
+/* Adaptive Elastic Grid / Flex track Slider hooks */
+.category-header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-nav-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.carousel-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--marquee-border);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.carousel-arrow:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.works-grid.adaptive-carousel,
+.posters-grid.adaptive-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+}
+
+.works-grid.adaptive-carousel.carousel-active,
+.posters-grid.adaptive-carousel.carousel-active {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 30px !important;
+    width: max-content !important;
+    will-change: transform;
+}
+
+.works-grid.adaptive-carousel.carousel-active .featured-card,
+.posters-grid.adaptive-carousel.carousel-active .featured-card {
+    flex-shrink: 0 !important;
+    width: calc((1200px - 60px) / 3) !important;
+}
+
 /* ==========================================================================
-   7. STANDARD GRIDS (Experience)
+   7. Experience Timelines
    ========================================================================== */
 .exp-grid {
     display: grid;
@@ -768,7 +915,7 @@ header {
 }
 
 /* ==========================================================================
-   8. Resume Module
+   8. Resume Component Blocks
    ========================================================================== */
 .resume-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -804,6 +951,10 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.resume-download-card {
+    justify-content: flex-start;
 }
 
 .profile-archive-label {
@@ -936,16 +1087,6 @@ header {
     font-family: monospace;
 }
 
-.resume-download-card {
-    background: var(--bg-card);
-    border: 1px solid var(--marquee-border);
-    border-radius: 16px;
-    padding: clamp(20px, 4vw, 40px);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
 .download-card-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -961,7 +1102,8 @@ header {
     margin-bottom: 30px;
 }
 
-.download-action-btn {
+.download-action-btn,
+.resume-download-btn {
     background: var(--text-primary);
     color: var(--bg-dark);
     font-weight: 700;
@@ -977,8 +1119,21 @@ header {
     transition: opacity 0.2s ease;
 }
 
+[data-theme="light"] .download-action-btn,
+[data-theme="light"] .resume-download-btn {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+[data-theme="light"] .download-action-btn:hover,
+[data-theme="light"] .resume-download-btn:hover {
+    background-color: #0f766e !important;
+    color: #ffffff !important;
+}
+
 /* ==========================================================================
-   9. Certificates
+   9. Badges & Certifications List
    ========================================================================== */
 .cert-list {
     display: flex;
@@ -1030,7 +1185,7 @@ header {
 }
 
 /* ==========================================================================
-   10. Contact Terminal
+   10. Interactive Contact Form & Mock Terminal Console
    ========================================================================== */
 #contact h2 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -1320,8 +1475,19 @@ header {
     width: 100%;
 }
 
+[data-theme="light"] .form-submit-btn {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
 .form-submit-btn:hover {
     opacity: 0.9;
+}
+
+[data-theme="light"] .form-submit-btn:hover {
+    background-color: #0f766e !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
 }
 
 .secure-notice {
@@ -1360,12 +1526,9 @@ header {
     color: var(--accent-cyan);
 }
 
-
 /* ==========================================================================
-   11. Strict Alternating Background Patterns (Plain / Dots)
+   11. Strict Alternating Section Background Patterns
    ========================================================================== */
-
-/* 1. PLAIN BACKGROUND SECTIONS */
 #home,
 #experience,
 #certificates,
@@ -1374,7 +1537,6 @@ header {
     background-image: none !important;
 }
 
-/* 2. DOTTED BACKGROUND SECTIONS (Balanced) */
 #about,
 #works,
 #resume {
@@ -1384,7 +1546,6 @@ header {
     background-position: 0 0 !important;
 }
 
-/* Ensure cards inside dotted sections have enough contrast */
 #about .work-card,
 #works .featured-card,
 #resume .resume-snapshot-card,
@@ -1393,42 +1554,50 @@ header {
     --card-hover-bg: #111118;
 }
 
-
-/* ==========================================================================
-LIGHT MODE OVERRIDES FOR ALTERNATING PATTERN
-========================================================================== */
-
-/* Light Mode: Plain Sections */
-[data-theme="light"] #home,
-[data-theme="light"] #experience,
-[data-theme="light"] #certificates,
-[data-theme="light"] #contact {
-    background-color: var(--bg-dark) !important;
-    background-image: none !important;
-}
-
-/* Light Mode: Dotted Sections */
+/* Light Mode Alternating Enhancements */
 [data-theme="light"] #about,
 [data-theme="light"] #works,
 [data-theme="light"] #resume {
-    background-color: var(--bg-dark) !important;
-    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
-    background-size: 24px 24px !important;
-    background-position: 0 0 !important;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px) !important;
+    background-size: 30px 30px !important;
 }
 
-/* Light Mode: Contrast adjustments for cards */
-[data-theme="light"] #about .work-card,
-[data-theme="light"] #works .featured-card,
-[data-theme="light"] #resume .resume-snapshot-card,
-[data-theme="light"] #resume .resume-download-card {
-    --bg-card: #ffffff;
-    --card-hover-bg: #fdfdfd;
+[data-theme="light"] .featured-card,
+[data-theme="light"] .exp-card,
+[data-theme="light"] .resume-snapshot-card {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Universal Light-Mode Dark Header Protection */
+[data-theme="light"] header {
+    background-color: #030305 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    mix-blend-mode: normal !important;
+}
+
+[data-theme="light"] header .nav-links a,
+[data-theme="light"] header .menu-toggle,
+[data-theme="light"] header #theme-toggle {
+    color: #f0f0f0 !important;
+}
+
+[data-theme="light"] header #theme-toggle {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="light"] header #theme-toggle:hover,
+[data-theme="light"] header .menu-toggle:hover,
+[data-theme="light"] header .nav-links a:hover {
+    color: #00f0ff !important;
+    border-color: #00f0ff !important;
 }
 
 /* ==========================================================================
-12. Toast & Responsiveness
-========================================================================== */
+   12. Popups, Toast System Notifications & Responsiveness
+   ========================================================================== */
 .custom-toast {
     position: fixed;
     bottom: 30px;
@@ -1467,13 +1636,11 @@ LIGHT MODE OVERRIDES FOR ALTERNATING PATTERN
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Scroll Progress Indicator */
 .scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
     width: 0%;
-    /* Tracks scroll percentage */
     height: 3px;
     background: var(--accent-cyan);
     z-index: 1000;
@@ -1524,372 +1691,7 @@ LIGHT MODE OVERRIDES FOR ALTERNATING PATTERN
     font-weight: bold;
 }
 
-@media (max-width: 992px) {
-
-    .about-grid,
-    .contact-split-grid,
-    .resume-split-grid {
-        grid-template-columns: 1fr !important;
-        gap: 40px;
-    }
-
-    .about-side-stats {
-        order: -1;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 15px 30px;
-    }
-
-    .stat {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-
-    .cert-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 20px 0;
-    }
-
-    .cert-link {
-        text-align: left;
-    }
-
-    .marquee-item {
-        padding: 10px 22px;
-        font-size: 0.85rem;
-    }
-
-    .terminal-body {
-        padding-top: 60px;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .cursor-dot,
-    .cursor-outline {
-        display: none !important;
-    }
-
-    * {
-        cursor: auto !important;
-    }
-}
-
-
-
-
-[data-theme="light"] {
-    /* Using a subtle gradient instead of flat grey */
-    --bg-dark: linear-gradient(135deg, #f0f2f5 0%, #e6e9ef 100%);
-    --bg-card: #ffffff;
-
-    /* Stronger contrast for better readability */
-    --text-primary: #0f172a;
-    --text-muted: #475569;
-}
-
-/* This adds a "noise" texture to the background using a very subtle overlay */
-[data-theme="light"] body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0.03;
-    z-index: -1;
-    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-}
-
-[data-theme="light"] .featured-card,
-[data-theme="light"] .exp-card,
-[data-theme="light"] .mock-terminal {
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    /* Stacked shadows give a "lifting" effect */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-}
-
-/* Force the navbar to remain dark, even in light mode */
-[data-theme="light"] header {
-    background-color: #030305 !important;
-    /* Dark background */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    mix-blend-mode: normal !important;
-    /* Reset blend mode to ensure solid color */
-}
-
-/* Ensure links in the dark navbar are visible */
-[data-theme="light"] header .nav-links a {
-    color: #f0f0f0 !important;
-    /* Light text */
-}
-
-[data-theme="light"] header .nav-links a:hover {
-    color: var(--accent-cyan) !important;
-}
-
-[data-theme="light"] #theme-toggle {
-    color: #f0f0f0 !important;
-    /* Ensure toggle button icon is light */
-}
-
-/* ==========================================================================
-   ENHANCED LIGHT MODE: DARK GRID ON LIGHT BACKGROUND
-   ========================================================================== */
-
-/* Light Mode: Dotted Sections with Dark Grid Texture */
-[data-theme="light"] #about,
-[data-theme="light"] #works,
-[data-theme="light"] #resume {
-    /* 1. Light Background Base */
-    background-color: var(--bg-dark) !important;
-
-    /* 2. Dark Grid Pattern (Dots) */
-    /* This uses a slightly darker color (rgba(0,0,0,0.1)) to make the grid pop */
-    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px) !important;
-
-    /* 3. Grid Settings */
-    background-size: 30px 30px !important;
-    background-position: 0 0 !important;
-}
-
-/* Ensure content cards remain crisp white with shadows for depth */
-[data-theme="light"] .featured-card,
-[data-theme="light"] .exp-card,
-[data-theme="light"] .resume-snapshot-card {
-    background-color: #ffffff !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
-}
-
-/* Fix for image_d6416c.png */
-[data-theme="light"] .glitch-text::before,
-[data-theme="light"] .glitch-text::after {
-    background: transparent !important;
-    /* Removes the dark box */
-    color: var(--text-primary);
-}
-
-[data-theme="light"] .form-submit-btn {
-    background-color: #1e293b !important;
-    /* Dark background */
-    color: #ffffff !important;
-    /* White text */
-}
-
-[data-theme="light"] .form-submit-btn:hover {
-    background-color: #0f766e !important;
-    /* Teal on hover */
-    color: #ffffff !important;
-    /* Keep text white */
-    opacity: 1 !important;
-    /* Prevent it from going invisible */
-}
-
-/* Ensure Resume Button remains visible in Light Mode */
-[data-theme="light"] .download-action-btn,
-[data-theme="light"] .resume-download-btn {
-    background-color: #1e293b !important;
-    /* Force dark background */
-    color: #ffffff !important;
-    /* Force white text */
-    border: none !important;
-}
-
-/* Ensure hover state doesn't make text invisible */
-[data-theme="light"] .download-action-btn:hover,
-[data-theme="light"] .resume-download-btn:hover {
-    background-color: #0f766e !important;
-    /* Teal hover */
-    color: #ffffff !important;
-}
-
-/* Ensure the button text is visible against the dark button background */
-[data-theme="light"] .form-submit-btn {
-    background-color: #1e293b !important;
-    /* Keep the dark blue-grey button */
-    color: #e2e8f0 !important;
-    /* Light, readable text color */
-    font-weight: 500;
-}
-
-/* Ensure the hover state is also readable */
-[data-theme="light"] .form-submit-btn:hover {
-    background-color: #0f766e !important;
-    /* Teal on hover */
-    color: #ffffff !important;
-    /* White text on hover */
-}
-
-/* Ensure text turns white on hover for the Archive button in Light Mode */
-[data-theme="light"] .magnetic-btn:hover {
-    color: #ffffff !important;
-    /* Force text color to white */
-    background-color: #0f766e !important;
-    /* Forces the Teal hover background */
-    border-color: #0f766e !important;
-    /* Matches the border to the background */
-}
-
-/* Ensure default state is dark text for readability */
-[data-theme="light"] .magnetic-btn {
-    color: #1a1a1a !important;
-    border: 1px solid #cbd5e1 !important;
-}
-
-/* Ultimate Override for Archive Button */
-[data-theme="light"] .magnetic-btn:hover {
-    background-color: #0f766e !important;
-    color: #ffffff !important;
-    border-color: #0f766e !important;
-    opacity: 1 !important;
-}
-
-/* Consistent Award Card Highlighting using Cyan */
-
-/* Ensure tags/dates are aligned and styled consistently */
-.tags span {
-    display: inline-block;
-    padding: 8px 16px;
-    /* Adjusts the size of the pill */
-    margin-right: 10px;
-    background-color: #1a1a1a;
-    /* Dark background color */
-    color: #888;
-    /* Muted text color */
-    border-radius: 20px;
-    /* Makes the corners fully rounded */
-    font-size: 0.85rem;
-    font-weight: 500;
-    border: none;
-    /* Removes the border to match your image */
-}
-
-/* ==========================================================================
-   DYNAMIC COMPONENT CAROUSEL HOOKS
-   ========================================================================== */
-.category-header-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    width: 100%;
-}
-
-.carousel-nav-controls {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.carousel-arrow {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--bg-card);
-    border: 1px solid var(--marquee-border);
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: var(--transition);
-    user-select: none;
-}
-
-.carousel-arrow:hover {
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-}
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 10px 0;
-}
-
-/* Base adaptive container rules */
-.works-grid.adaptive-carousel,
-.posters-grid.adaptive-carousel {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* Default 3 when static */
-    gap: 30px;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 100%;
-}
-
-/* Transformed states dynamically applied by JS */
-.works-grid.adaptive-carousel.carousel-active,
-.posters-grid.adaptive-carousel.carousel-active {
-    display: flex !important;
-    grid-template-columns: none !important;
-    gap: 30px !important;
-    width: max-content !important;
-    will-change: transform;
-}
-
-.works-grid.adaptive-carousel.carousel-active .featured-card,
-.posters-grid.adaptive-carousel.carousel-active .featured-card {
-    flex-shrink: 0 !important;
-    /* Card structural width sizing when operating inside a horizontal carousel flex-track */
-    width: calc((1200px - 60px) / 3) !important;
-}
-
-/* Response handling transformations */
-@media (max-width: 1200px) {
-
-    .works-grid.adaptive-carousel.carousel-active .featured-card,
-    .posters-grid.adaptive-carousel.carousel-active .featured-card {
-        width: 320px !important;
-    }
-}
-
-@media (max-width: 992px) {
-
-    .works-grid.adaptive-carousel:not(.carousel-active),
-    .posters-grid.adaptive-carousel:not(.carousel-active) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 650px) {
-
-    .works-grid.adaptive-carousel:not(.carousel-active),
-    .posters-grid.adaptive-carousel:not(.carousel-active) {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Cyan highlight styling for specific nodes */
-.award-card {
-    border: 1px solid var(--accent-cyan) !important;
-    background: linear-gradient(135deg, rgba(0, 240, 255, 0.02) 0%, var(--bg-card) 100%) !important;
-}
-
-.award-card .card-role {
-    color: var(--accent-cyan) !important;
-    font-weight: bold;
-}
-
-/* ==========================================================================
-   TRUSTED BY SECTION
-   ========================================================================== */
+/* Industry Trusted By Brand Banner */
 .trusted-by-section {
     padding: 30px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -1915,7 +1717,6 @@ LIGHT MODE OVERRIDES FOR ALTERNATING PATTERN
     flex-wrap: wrap;
 }
 
-/* If using plain text for the brand names */
 .trusted-brand {
     font-size: 1.2rem;
     font-weight: 700;
@@ -1930,7 +1731,6 @@ LIGHT MODE OVERRIDES FOR ALTERNATING PATTERN
     color: var(--accent-cyan);
 }
 
-/* If using <img> tags instead of text for the logos */
 .trusted-logos img {
     height: 35px;
     object-fit: contain;
@@ -1942,13 +1742,196 @@ LIGHT MODE OVERRIDES FOR ALTERNATING PATTERN
     filter: grayscale(0%) opacity(1);
 }
 
-/* Responsive adjustment for mobile */
+/* ==========================================================================
+   13. Unified Media Queries (No Fragmented Splitting)
+   ========================================================================== */
+@media (max-width: 992px) {
+
+    .about-grid,
+    .contact-split-grid,
+    .resume-split-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px;
+    }
+
+    .about-side-stats {
+        order: -1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px 30px;
+    }
+
+    .stat {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .works-grid.adaptive-carousel:not(.carousel-active),
+    .posters-grid.adaptive-carousel:not(.carousel-active) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+
+    .works-grid.adaptive-carousel:not(.carousel-active),
+    .posters-grid.adaptive-carousel:not(.carousel-active) {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
+
+    /* Mobile Header Layout Resets */
+    header {
+        mix-blend-mode: normal !important;
+        background-color: rgba(3, 3, 5, 0.9) !important;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Combined Slider Sidebar Navigation Drawers */
+    .nav-links {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: #030305 !important;
+        padding: 100px 40px;
+        gap: 30px;
+        align-items: flex-start;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.8) !important;
+        z-index: 9999 !important;
+    }
+
+    .nav-links.nav-active {
+        right: 0;
+    }
+
+    [data-theme="light"] header {
+        background-color: rgba(25, 28, 34, 0.9) !important;
+    }
+
+    [data-theme="light"] .nav-links {
+        background-color: #030305 !important;
+        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Content Layout Alignment Adjustments */
+    .cert-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px 0;
+    }
+
+    .cert-link {
+        text-align: left;
+    }
+
+    .marquee-item {
+        padding: 10px 22px;
+        font-size: 0.85rem;
+    }
+
+    .terminal-body {
+        padding-top: 60px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
     .trusted-logos {
         gap: 25px;
     }
 
     .trusted-brand {
         font-size: 1rem;
+    }
+
+    /* Safe Input Cursor Kill On Mobile Screens */
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+}
+
+/* ==========================================================================
+   Light Mode Fix for the Award Card
+   ========================================================================== */
+[data-theme="light"] .award-card {
+    /* Flips the background to a beautiful crisp white gradient */
+    background: linear-gradient(135deg, rgba(0, 125, 133, 0.05) 0%, #ffffff 100%) !important;
+    border: 1px solid var(--accent-cyan) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Tweaks the year/award pills at the bottom so they match the light design */
+[data-theme="light"] .award-card .tech-stack span {
+    background: rgba(0, 0, 0, 0.04) !important;
+    color: var(--text-muted) !important;
+    border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ==========================================================================
+   Light Mode Fix for the Resume Download Card
+   ========================================================================== */
+[data-theme="light"] .resume-download-card {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ==========================================================================
+   Carousel Mobile Width & Arrow Alignment Fixes
+   ========================================================================== */
+
+/* 1. Move spacing to the parent container so text and arrows line up perfectly */
+.category-header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-top: clamp(30px, 5vw, 50px);
+    /* Handles top spacing uniformly */
+}
+
+/* Resets the individual heading margin so it doesn't break button alignment */
+.category-header-wrap .sub-heading {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+}
+
+/* Fixes button placement wrapper spacing */
+.carousel-nav-controls {
+    margin-bottom: 0 !important;
+    display: flex;
+    gap: 8px;
+}
+
+/* 2. Responsive Card Scaling Engine */
+@media (max-width: 768px) {
+
+    .works-grid.adaptive-carousel.carousel-active .featured-card,
+    .posters-grid.adaptive-carousel.carousel-active .featured-card {
+        /* Fills the mobile layout width cleanly without overflowing screen boundaries */
+        width: 90vw !important;
+        max-width: 340px;
     }
 }

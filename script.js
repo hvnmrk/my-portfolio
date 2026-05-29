@@ -1,21 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Custom Trailing Cursor ---
+    // --- 1. Custom Trailing Cursor Engine ---
     if (window.matchMedia("(pointer: fine)").matches) {
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
-        const hoverTargets = document.querySelectorAll('.hover-target');
         let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
 
         window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX; mouseY = e.clientY;
-            cursorDot.style.left = `${mouseX}px`; cursorDot.style.top = `${mouseY}px`;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
         });
 
         function animateCursor() {
             outlineX += (mouseX - outlineX) * 0.15;
             outlineY += (mouseY - outlineY) * 0.15;
-            cursorOutline.style.left = `${outlineX}px`; cursorOutline.style.top = `${outlineY}px`;
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
@@ -25,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cursorOutline.classList.add('expand');
             }
         }, true);
+
         document.body.addEventListener('mouseleave', (e) => {
             if (e.target.classList && e.target.classList.contains('hover-target')) {
                 cursorOutline.classList.remove('expand');
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. Magnetic Buttons ---
+    // --- 3. Magnetic Component Interaction Elements ---
     document.querySelectorAll('.magnetic-btn').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
@@ -50,19 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('mouseleave', () => btn.style.transform = `translate(0px, 0px)`);
     });
 
-    // --- 4. Adaptive Grid/Carousel Switcher ---
+    // --- 4. Adaptive Grid/Carousel Horizontal Track Layout Switcher ---
     const adaptiveContainers = document.querySelectorAll('.adaptive-carousel');
 
     adaptiveContainers.forEach(grid => {
         const cards = grid.children;
         const totalCards = cards.length;
 
-        // Transform system only if contents have more than 3 units
         if (totalCards > 3) {
             grid.classList.add('carousel-active');
             const sectionHeader = grid.closest('.carousel-container').previousElementSibling;
 
-            // Generate nav arrows inside the category block
             const navWrapper = document.createElement('div');
             navWrapper.classList.add('carousel-nav-controls');
             navWrapper.innerHTML = `
@@ -78,12 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
             function updateCarousel() {
                 const cardWidth = cards[0].getBoundingClientRect().width;
                 const gap = 30;
-                // Changed Math.floor to Math.round to fix the empty space bug
                 const visibleAmt = Math.round(grid.parentElement.getBoundingClientRect().width / (cardWidth + gap));
                 const maxIndex = totalCards - visibleAmt;
 
                 if (currentIndex < 0) currentIndex = 0;
-                // Prevents index from going out of bounds
                 if (currentIndex > maxIndex) currentIndex = Math.max(0, maxIndex);
 
                 const moveX = currentIndex * (cardWidth + gap);
@@ -93,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn.addEventListener('click', () => {
                 const cardWidth = cards[0].getBoundingClientRect().width;
                 const gap = 30;
-                // Changed Math.floor to Math.round here as well
                 const visibleAmt = Math.round(grid.parentElement.getBoundingClientRect().width / (cardWidth + gap));
                 const maxIndex = totalCards - visibleAmt;
 
@@ -102,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateCarousel();
                 }
             });
+
             prevBtn.addEventListener('click', () => {
                 if (currentIndex > 0) {
                     currentIndex--;
@@ -110,11 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             window.addEventListener('resize', updateCarousel);
-            setTimeout(updateCarousel, 300); // Deferred execution hook to accurately map spacing calculations
+            setTimeout(updateCarousel, 300);
         }
     });
 
-    // --- 5. Scroll Reveal ---
+    // --- 5. Scroll Intersection Reveal Elements ---
     const revealOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -125,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => revealOnScroll.observe(el));
 
-    // --- 6. YouTube Controls ---
+    // --- 6. Embedded YouTube PostMessage Controllers ---
     document.querySelectorAll('.hover-video-card').forEach(card => {
         const iframe = document.getElementById(card.getAttribute('data-video-id'));
         const sendCmd = (cmd) => iframe?.contentWindow.postMessage(JSON.stringify({ event: 'command', func: cmd, args: [] }), '*');
@@ -133,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseleave', () => sendCmd('pauseVideo'));
     });
 
-    // --- 7. Contact Form Modal Logic ---
+    // --- 7. Secure Contact Submission Form & Modal Handlers ---
     const contactForm = document.getElementById('contact-form');
     const modal = document.getElementById('email-modal');
     const closeBtn = document.getElementById('close-modal');
@@ -161,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.addEventListener('click', () => modal.style.display = 'none');
     }
 
-    // --- 8. Theme Toggle ---
+    // --- 8. LocalStorage Active Theme Memory State Toggle ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     if (themeToggleBtn) {
         const themeIcon = themeToggleBtn.querySelector('.theme-icon');
@@ -176,6 +175,42 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
             localStorage.setItem('theme', isLight ? 'dark' : 'light');
             themeIcon.textContent = isLight ? '☼' : '☾';
+        });
+    }
+
+    // --- 9. Robust Responsive Mobile Sidebar Drawer Toggle Engine ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('nav-active');
+
+            const menuIcon = menuToggle.querySelector('.menu-icon');
+            if (navLinks.classList.contains('nav-active')) {
+                menuIcon.textContent = '✕';
+            } else {
+                menuIcon.textContent = '☰';
+            }
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                const menuIcon = menuToggle.querySelector('.menu-icon');
+                if (menuIcon) menuIcon.textContent = '☰';
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    const menuIcon = menuToggle.querySelector('.menu-icon');
+                    if (menuIcon) menuIcon.textContent = '☰';
+                }
+            }
         });
     }
 });
