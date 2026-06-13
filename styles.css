@@ -1900,8 +1900,6 @@ header {
 /* ==========================================================================
    Carousel Mobile Width & Arrow Alignment Fixes
    ========================================================================== */
-
-/* 1. Move spacing to the parent container so text and arrows line up perfectly */
 .category-header-wrap {
     display: flex;
     justify-content: space-between;
@@ -1909,28 +1907,23 @@ header {
     position: relative;
     width: 100%;
     margin-top: clamp(30px, 5vw, 50px);
-    /* Handles top spacing uniformly */
 }
 
-/* Resets the individual heading margin so it doesn't break button alignment */
 .category-header-wrap .sub-heading {
     margin-top: 0 !important;
     margin-bottom: 12px !important;
 }
 
-/* Fixes button placement wrapper spacing */
 .carousel-nav-controls {
     margin-bottom: 0 !important;
     display: flex;
     gap: 8px;
 }
 
-/* 2. Responsive Card Scaling Engine */
 @media (max-width: 768px) {
 
     .works-grid.adaptive-carousel.carousel-active .featured-card,
     .posters-grid.adaptive-carousel.carousel-active .featured-card {
-        /* Fills the mobile layout width cleanly without overflowing screen boundaries */
         width: 90vw !important;
         max-width: 340px;
     }
