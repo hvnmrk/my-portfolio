@@ -1,6 +1,136 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Custom Trailing Cursor Engine ---
+    // --- 1. LTO-Style Interactive Business Card / Digital ID Flip ---
+    const interactiveCard = document.getElementById('interactiveCard');
+    if (interactiveCard) {
+        interactiveCard.addEventListener('click', () => {
+            interactiveCard.classList.toggle('is-flipped');
+        });
+
+        interactiveCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                interactiveCard.classList.toggle('is-flipped');
+            }
+        });
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+            interactiveCard.addEventListener('mousemove', (e) => {
+                if (!interactiveCard.classList.contains('is-flipped')) {
+                    const rect = interactiveCard.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    const rotateX = -(y / (rect.height / 2)) * 8;
+                    const rotateY = (x / (rect.width / 2)) * 8;
+
+                    interactiveCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+            });
+
+            interactiveCard.addEventListener('mouseleave', () => {
+                if (!interactiveCard.classList.contains('is-flipped')) {
+                    interactiveCard.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                } else {
+                    interactiveCard.style.transform = `rotateY(180deg)`;
+                }
+            });
+        }
+    }
+
+    // --- 2. Sliding Carousel Engine with Mobile Touch-Swipe Detection ---
+    const carousels = document.querySelectorAll('.adaptive-carousel');
+
+    carousels.forEach(track => {
+        const cards = Array.from(track.children);
+        const totalCards = cards.length;
+        const container = track.closest('.carousel-container');
+        if (!container) return;
+
+        const header = container.previousElementSibling;
+        if (!header) return;
+
+        const prevBtn = header.querySelector('.prev-arrow');
+        const nextBtn = header.querySelector('.next-arrow');
+        if (!prevBtn || !nextBtn) return;
+
+        let currentIndex = 0;
+
+        function getVisibleMetrics() {
+            const firstCard = cards[0];
+            const cardWidth = firstCard.getBoundingClientRect().width;
+            const style = window.getComputedStyle(track);
+            const gap = parseFloat(style.gap) || 24;
+            const containerWidth = container.getBoundingClientRect().width;
+
+            // On mobile (cardWidth >= containerWidth), 1 card is visible per slide
+            const visible = Math.max(1, Math.round(containerWidth / (cardWidth + (containerWidth > cardWidth ? gap : 0))));
+            const maxIdx = Math.max(0, totalCards - visible);
+            return { cardWidth, gap, maxIdx };
+        }
+
+        function updateSlider() {
+            const { cardWidth, gap, maxIdx } = getVisibleMetrics();
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIdx) currentIndex = maxIdx;
+
+            const translateX = currentIndex * (cardWidth + gap);
+            track.style.transform = `translateX(-${translateX}px)`;
+
+            prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+            prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+
+            nextBtn.style.opacity = currentIndex >= maxIdx ? '0.3' : '1';
+            nextBtn.style.pointerEvents = currentIndex >= maxIdx ? 'none' : 'auto';
+        }
+
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const { maxIdx } = getVisibleMetrics();
+            if (currentIndex < maxIdx) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+
+        // Mobile Touch Swiping Listeners
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchStartX - touchEndX;
+            const { maxIdx } = getVisibleMetrics();
+
+            // Swipe Left -> Next Slide
+            if (swipeDistance > 45 && currentIndex < maxIdx) {
+                currentIndex++;
+                updateSlider();
+            }
+            // Swipe Right -> Previous Slide
+            else if (swipeDistance < -45 && currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', updateSlider);
+        setTimeout(updateSlider, 200);
+    });
+
+    // --- 3. Custom Trailing Cursor Engine ---
     if (window.matchMedia("(pointer: fine)").matches) {
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
@@ -9,33 +139,37 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
+            if (cursorDot) {
+                cursorDot.style.left = `${mouseX}px`;
+                cursorDot.style.top = `${mouseY}px`;
+            }
         });
 
         function animateCursor() {
             outlineX += (mouseX - outlineX) * 0.15;
             outlineY += (mouseY - outlineY) * 0.15;
-            cursorOutline.style.left = `${outlineX}px`;
-            cursorOutline.style.top = `${outlineY}px`;
+            if (cursorOutline) {
+                cursorOutline.style.left = `${outlineX}px`;
+                cursorOutline.style.top = `${outlineY}px`;
+            }
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
 
         document.body.addEventListener('mouseenter', (e) => {
             if (e.target.classList && e.target.classList.contains('hover-target')) {
-                cursorOutline.classList.add('expand');
+                cursorOutline?.classList.add('expand');
             }
         }, true);
 
         document.body.addEventListener('mouseleave', (e) => {
             if (e.target.classList && e.target.classList.contains('hover-target')) {
-                cursorOutline.classList.remove('expand');
+                cursorOutline?.classList.remove('expand');
             }
         }, true);
     }
 
-    // --- 2. Scroll Progress Bar ---
+    // --- 4. Scroll Progress Bar ---
     const progressBar = document.querySelector('.scroll-progress');
     window.addEventListener('scroll', () => {
         if (progressBar) {
@@ -44,87 +178,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. Magnetic Component Interaction Elements ---
+    // --- 5. Magnetic Component Interactions ---
     document.querySelectorAll('.magnetic-btn').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
-            btn.style.transform = `translate(${(e.clientX - (rect.left + rect.width / 2)) * 0.25}px, ${(e.clientY - (rect.top + rect.height / 2)) * 0.25}px)`;
+            btn.style.transform = `translate(${(e.clientX - (rect.left + rect.width / 2)) * 0.2}px, ${(e.clientY - (rect.top + rect.height / 2)) * 0.2}px)`;
         });
         btn.addEventListener('mouseleave', () => btn.style.transform = `translate(0px, 0px)`);
     });
 
-    // --- 4. Adaptive Grid/Carousel Horizontal Track Layout Switcher ---
-    const adaptiveContainers = document.querySelectorAll('.adaptive-carousel');
-
-    adaptiveContainers.forEach(grid => {
-        const cards = grid.children;
-        const totalCards = cards.length;
-
-        if (totalCards > 3) {
-            grid.classList.add('carousel-active');
-            const sectionHeader = grid.closest('.carousel-container').previousElementSibling;
-
-            const navWrapper = document.createElement('div');
-            navWrapper.classList.add('carousel-nav-controls');
-            navWrapper.innerHTML = `
-                <button class="carousel-arrow prev-arrow hover-target">←</button>
-                <button class="carousel-arrow next-arrow hover-target">→</button>
-            `;
-            sectionHeader.appendChild(navWrapper);
-
-            let currentIndex = 0;
-            const prevBtn = navWrapper.querySelector('.prev-arrow');
-            const nextBtn = navWrapper.querySelector('.next-arrow');
-
-            function updateCarousel() {
-                const cardWidth = cards[0].getBoundingClientRect().width;
-                const gap = 30;
-                const visibleAmt = Math.round(grid.parentElement.getBoundingClientRect().width / (cardWidth + gap));
-                const maxIndex = totalCards - visibleAmt;
-
-                if (currentIndex < 0) currentIndex = 0;
-                if (currentIndex > maxIndex) currentIndex = Math.max(0, maxIndex);
-
-                const moveX = currentIndex * (cardWidth + gap);
-                grid.style.transform = `translateX(-${moveX}px)`;
-            }
-
-            nextBtn.addEventListener('click', () => {
-                const cardWidth = cards[0].getBoundingClientRect().width;
-                const gap = 30;
-                const visibleAmt = Math.round(grid.parentElement.getBoundingClientRect().width / (cardWidth + gap));
-                const maxIndex = totalCards - visibleAmt;
-
-                if (currentIndex < maxIndex) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            });
-
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            });
-
-            window.addEventListener('resize', updateCarousel);
-            setTimeout(updateCarousel, 300);
-        }
-    });
-
-    // --- 5. Scroll Intersection Reveal Elements ---
-    const revealOnScroll = new IntersectionObserver((entries) => {
+    // --- 6. Scroll Intersection Reveal ---
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                revealOnScroll.unobserve(entry.target);
+                revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => revealOnScroll.observe(el));
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // --- 6. Embedded YouTube PostMessage Controllers ---
+    // --- 7. Embedded Video Controllers ---
     document.querySelectorAll('.hover-video-card').forEach(card => {
         const iframe = document.getElementById(card.getAttribute('data-video-id'));
         const sendCmd = (cmd) => iframe?.contentWindow.postMessage(JSON.stringify({ event: 'command', func: cmd, args: [] }), '*');
@@ -132,35 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseleave', () => sendCmd('pauseVideo'));
     });
 
-    // --- 7. Secure Contact Submission Form & Modal Handlers ---
-    const contactForm = document.getElementById('contact-form');
-    const modal = document.getElementById('email-modal');
-    const closeBtn = document.getElementById('close-modal');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const response = await fetch("https://formspree.io/f/xlgvzele", {
-                method: "POST",
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                modal.style.display = 'flex';
-                contactForm.reset();
-            } else {
-                alert("Submission failed. Please try again.");
-            }
-        });
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    }
-
-    // --- 8. LocalStorage Active Theme Memory State Toggle ---
+    // --- 8. Theme Switcher ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     if (themeToggleBtn) {
         const themeIcon = themeToggleBtn.querySelector('.theme-icon');
@@ -172,13 +218,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         themeToggleBtn.addEventListener('click', () => {
             const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-            document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
-            localStorage.setItem('theme', isLight ? 'dark' : 'light');
+            const nextTheme = isLight ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', nextTheme);
+            localStorage.setItem('theme', nextTheme);
             themeIcon.textContent = isLight ? '☼' : '☾';
         });
     }
 
-    // --- 9. Robust Responsive Mobile Sidebar Drawer Toggle Engine ---
+    // --- 9. Responsive Mobile Navigation Drawer ---
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
@@ -186,12 +233,9 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             navLinks.classList.toggle('nav-active');
-
             const menuIcon = menuToggle.querySelector('.menu-icon');
-            if (navLinks.classList.contains('nav-active')) {
-                menuIcon.textContent = '✕';
-            } else {
-                menuIcon.textContent = '☰';
+            if (menuIcon) {
+                menuIcon.textContent = navLinks.classList.contains('nav-active') ? '✕' : '☰';
             }
         });
 
@@ -213,10 +257,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- 10. Contact Form Transmission & Modal ---
+    const contactForm = document.getElementById('contact-form');
+    const modal = document.getElementById('email-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            try {
+                const response = await fetch("https://formspree.io/f/xlgvzele", {
+                    method: "POST",
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    if (modal) modal.style.display = 'flex';
+                    contactForm.reset();
+                } else {
+                    alert("Submission error. Please send an email directly to tomaquinmark123@gmail.com.");
+                }
+            } catch (err) {
+                alert("Network error. Please try again.");
+            }
+        });
+    }
+
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    }
 });
 
 function showToast() {
     const toast = document.getElementById('toast-notification');
-    toast.classList.add('active');
-    setTimeout(() => toast.classList.remove('active'), 3000);
+    if (toast) {
+        toast.classList.add('active');
+        setTimeout(() => toast.classList.remove('active'), 2800);
+    }
 }

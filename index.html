@@ -4,26 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Tomaquin</title>
+    <title>Mark Tomaquin — UI/UX Designer & Systems Specialist</title>
     <link rel="icon" type="image/png" href="af.png">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
 
 <body>
     <div class="scroll-progress"></div>
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
+
     <header>
         <div class="container nav-container">
-            <a href="#home" class="logo hover-target">
+            <a href="#home" class="logo hover-target" aria-label="Mark Tomaquin Home">
                 <img src="af.png" alt="Mark Tomaquin Logo">
+                <span class="logo-subtext">MT.NODE</span>
             </a>
 
             <div class="nav-right-group">
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="#about" class="hover-target">About</a></li>
+                        <li><a href="#about" class="hover-target">Identity</a></li>
                         <li><a href="#experience" class="hover-target">Experience</a></li>
                         <li><a href="#works" class="hover-target">Works</a></li>
                         <li><a href="#certificates" class="hover-target">Certificates</a></li>
@@ -33,531 +40,677 @@
                 </nav>
 
                 <div class="nav-right-controls">
-                    <button id="theme-toggle" class="hover-target" aria-label="Toggle Theme"
-                        style="background: none; border: none; color: var(--text-primary); font-size: 1.2rem; cursor: pointer;">
+                    <button id="theme-toggle" class="hover-target" aria-label="Toggle Theme">
                         <span class="theme-icon">☼</span>
                     </button>
-                    <button class="menu-toggle hover-target" aria-label="Toggle Menu">
+                    <button class="menu-toggle hover-target" aria-label="Toggle Navigation Menu">
                         <span class="menu-icon">☰</span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
+
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <p class="eyebrow reveal">SYSTEM // ONLINE</p>
+                <div class="system-status-badge reveal">
+                    <span class="pulse-dot"></span> SYSTEM ACTIVE // CORE ONLINE
+                </div>
                 <h1 class="glitch-text reveal" data-text="MARK TOMAQUIN">MARK TOMAQUIN</h1>
-                <p class="description reveal">Aspiring UI/UX Designer bridging the gap between clean aesthetics and
-                    technical system logic to create intuitive, user-centered digital experiences.</p>
-                <div class="btn-container reveal">
-                    <a href="#works" class="magnetic-btn hover-target">
-                        <span class="btn-text">Explore Archives</span>
+                <p class="description reveal">
+                    Bridging intuitive <span class="accent">UI/UX architecture</span> with reliable <span
+                        class="accent">frontend systems</span>. Building friction-free user flows rooted in technical
+                    execution.
+                </p>
+                <div class="btn-container hero-actions reveal">
+                    <a href="#works" class="magnetic-btn hover-target btn-primary">
+                        <span class="btn-text">Explore Systems ↘</span>
+                    </a>
+                    <a href="#digital-id" class="magnetic-btn hover-target btn-secondary">
+                        <span class="btn-text">Digital Card 📇</span>
                     </a>
                 </div>
             </div>
             <div class="ambient-light"></div>
         </section>
 
-        <!-- ==================== 1.5 TRUSTED BY BANNER ==================== -->
+        <!-- Collaborations Bar -->
         <div class="trusted-by-section reveal">
             <div class="container">
-                <p class="trusted-heading">// INDUSTRY EXPERIENCE</p>
+                <p class="trusted-heading">// FIELD COLLABORATIONS & INDUSTRY ROLES</p>
                 <div class="trusted-logos">
-                    <a href="https://www.facebook.com/profile.php?id=100057324885290" target="_blank"
+                    <a href="https://www.facebook.com/profile.php?id=100057324885290" target="_blank" rel="noopener"
                         class="trusted-brand hover-target">
                         BigJ Steel Fabrication ↗
                     </a>
+                    <span class="brand-divider">/</span>
+                    <span class="trusted-brand-static">Bakunawa Studios</span>
+                    <span class="brand-divider">/</span>
+                    <span class="trusted-brand-static">Our Lady of Fatima Univ. (IT&DS)</span>
                 </div>
             </div>
         </div>
 
+        <!-- Identity & Flippable Business Card -->
         <section id="about" class="about section-padding">
             <div class="container">
-                <h2 class="section-title reveal">01 / Identity</h2>
+                <h2 class="section-title reveal">01 / Identity & Credentials</h2>
+
                 <div class="about-grid reveal">
                     <div class="about-main-content">
-                        <p class="about-bio">I'm an IT student specializing in UI/UX design. I combine technical system
-                            thinking with a passion for user research, wireframing, and interactive prototyping to
-                            ensure every digital product I work on is both highly functional and effortless to navigate.
+                        <p class="about-bio">
+                            I am a final-year Information Technology student at <strong>Pamantasan ng Lungsod ng
+                                Valenzuela</strong> specializing in UI/UX architecture and system logic. I focus on
+                            creating structured user flows, systematic wireframing, and reliable frontend integration.
                         </p>
+
                         <div class="education-container">
                             <h3 class="sub-heading">/ Academic Foundation</h3>
                             <div class="edu-timeline">
                                 <div class="edu-item">
                                     <div class="edu-meta">
                                         <span class="edu-date">2023 — Present</span>
-                                        <span class="edu-status">Active Node</span>
+                                        <span class="edu-status">Senior Node</span>
                                     </div>
                                     <div class="edu-content">
                                         <h4>Bachelor of Science in Information Technology (BSIT)</h4>
-                                        <p>Pamantasan ng Lungsod ng Valenzuela</p>
+                                        <p>Pamantasan ng Lungsod ng Valenzuela (PLV)</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="id-meta-specs">
+                            <div class="spec-cell"><span class="spec-label">Discipline</span><span
+                                    class="spec-val">UI/UX & Frontend Logic</span></div>
+                            <div class="spec-cell"><span class="spec-label">Location</span><span
+                                    class="spec-val">Valenzuela City, PH</span></div>
+                            <div class="spec-cell"><span class="spec-label">Status</span><span
+                                    class="spec-val accent">Intern at Our Lady of Fatima Univ. (IT&DS)</span></div>
+                        </div>
                     </div>
-                    <div class="about-side-stats">
-                        <div class="stat"><span class="accent">Location</span> // Local </div>
-                        <div class="stat"><span class="accent">Focus</span> // UI/UX Design & Product Prototyping</div>
-                        <div class="stat"><span class="accent">Status</span> // Available for Internship</div>
+
+                    <!-- 3D Interactive Digital ID -->
+                    <div id="digital-id" class="id-card-showcase">
+                        <div class="id-showcase-header">
+                            <span class="id-showcase-title">// INTERACTIVE DIGITAL ID</span>
+                            <span class="id-flip-indicator"><span class="flip-icon">↻</span> Click to Flip</span>
+                        </div>
+
+                        <div class="digital-id-perspective">
+                            <div class="digital-id-card hover-target" id="interactiveCard" tabindex="0" role="button"
+                                aria-label="Click to flip digital business card">
+
+                                <!-- FRONT FACE -->
+                                <div class="card-face card-front">
+                                    <!-- Uncomment below to use uploaded front business card image: -->
+                                    <!-- <img src="card-front.png" alt="Card Front" class="card-custom-img"> -->
+                                    <div class="card-hologram-strip"></div>
+                                    <div class="card-header-bar">
+                                        <div class="gov-badge-wrap">
+                                            <div class="card-chip"></div>
+                                            <span class="card-org-tag">PORTFOLIO VERIFIED CREDENTIAL</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card-front-body">
+                                        <div class="card-avatar-box">
+                                            <img src="me.png" alt="Mark Tomaquin Avatar" class="card-avatar-img">
+                                            <div class="verified-watermark">MT</div>
+                                        </div>
+                                        <div class="card-identity-fields">
+                                            <span class="field-micro">FULL NAME</span>
+                                            <h3 class="card-holder-name">MARK TOMAQUIN</h3>
+
+                                            <span class="field-micro">DESIGNATION & TRACK</span>
+                                            <p class="card-holder-role">UI/UX DESIGNER // FRONTEND DEV</p>
+
+                                            <div class="card-specs-row">
+                                                <div>
+                                                    <span class="field-micro">ACADEMIC CLUSTER</span>
+                                                    <span class="card-code">PLV • BSIT</span>
+                                                </div>
+                                                <div>
+                                                    <span class="field-micro">IDENTIFIER</span>
+                                                    <span class="card-code">2026-UX-7790</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer-strip">
+                                        <span class="nfc-tag">⦾ NFC READY</span>
+                                        <span class="flip-hint-badge">CLICK TO FLIP REVERSE ↗</span>
+                                    </div>
+                                </div>
+
+                                <!-- BACK FACE -->
+                                <div class="card-face card-back">
+                                    <!-- Uncomment below to use uploaded back business card image: -->
+                                    <!-- <img src="card-back.png" alt="Card Back" class="card-custom-img"> -->
+                                    <div class="card-magnetic-bar"></div>
+
+                                    <div class="card-back-body">
+                                        <div class="card-barcode-wrap">
+                                            <div class="mock-barcode"></div>
+                                            <span class="barcode-num">0 9 2 9 7 2 9 9 0 1 5</span>
+                                        </div>
+
+                                        <div class="card-back-details">
+                                            <div class="qr-code-box">
+                                                <div class="mini-qr-pattern">
+                                                    <span></span><span></span><span></span><span></span>
+                                                </div>
+                                                <span class="qr-caption">SCAN CONTACT</span>
+                                            </div>
+
+                                            <div class="back-contact-lines">
+                                                <span class="field-micro">OFFICIAL INBOX</span>
+                                                <p class="back-text">tomaquinmark123@gmail.com</p>
+
+                                                <span class="field-micro">GITHUB HANDLE</span>
+                                                <p class="back-text">github.com/hvnmrk</p>
+
+                                                <span class="field-micro">PRIMARY ARSENAL</span>
+                                                <p class="back-text">Figma • Wireframes • PHP • JS</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-back-disclaimer">
+                                            Official identity card confirming technical competency in UI/UX
+                                            architecture, system development, and technical support.
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer-strip">
+                                        <span class="status-indicator">● AUTHENTICATED</span>
+                                        <span class="flip-hint-badge">CLICK TO FLIP OBVERSE ↖</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <p class="card-interaction-caption"> Click or tap the card to rotate 180°
+                        </p>
                     </div>
                 </div>
             </div>
 
+            <!-- Tech Marquee -->
+            <!-- Infinite Tech Marquee with Official Logos -->
             <div class="infinite-marquee-section">
                 <div class="container">
-                    <h3 class="sub-heading-marquee">// Tools & Technologies</h3>
-                    <p class="marquee-subtitle">Familiar with and actively using in my projects</p>
+                    <h3 class="sub-heading-marquee">// Tools, Frameworks & Core Stacks</h3>
                 </div>
                 <div class="marquee-wrapper">
+                    <!-- Top Row: Left to Right -->
                     <div class="marquee-track track-left-to-right">
-                        <div class="marquee-item"><span class="m-dot">✦</span> Figma</div>
-                        <div class="marquee-item"><span class="m-dot">▰</span> Photoshop</div>
-                        <div class="marquee-item"><span class="m-dot">▲</span> Illustrator</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> Wireframing</div>
-                        <div class="marquee-item"><span class="m-dot">●</span> Prototyping</div>
-                        <div class="marquee-item"><span class="m-dot">■</span> UI/UX Design</div>
-                        <div class="marquee-item"><span class="m-dot">✦</span> Figma</div>
-                        <div class="marquee-item"><span class="m-dot">▰</span> Photoshop</div>
-                        <div class="marquee-item"><span class="m-dot">▲</span> Illustrator</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> Wireframing</div>
-                        <div class="marquee-item"><span class="m-dot">●</span> Prototyping</div>
-                        <div class="marquee-item"><span class="m-dot">■</span> UI/UX Design</div>
+                        <div class="marquee-item"><i class="devicon-figma-plain colored"></i> Figma</div>
+                        <div class="marquee-item"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS
+                        </div>
+                        <div class="marquee-item"><i class="devicon-php-plain colored"></i> PHP</div>
+                        <div class="marquee-item"><i class="devicon-mysql-original colored"></i> MySQL</div>
+                        <div class="marquee-item"><i class="devicon-javascript-plain colored"></i> JavaScript ES6</div>
+                        <div class="marquee-item"><i class="devicon-photoshop-plain colored"></i> Photoshop</div>
+                        <div class="marquee-item"><i class="devicon-illustrator-plain colored"></i> Illustrator</div>
+
+                        <!-- Duplicate set to keep the infinite loop seamless -->
+                        <div class="marquee-item"><i class="devicon-figma-plain colored"></i> Figma</div>
+                        <div class="marquee-item"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS
+                        </div>
+                        <div class="marquee-item"><i class="devicon-php-plain colored"></i> PHP</div>
+                        <div class="marquee-item"><i class="devicon-mysql-original colored"></i> MySQL</div>
+                        <div class="marquee-item"><i class="devicon-javascript-plain colored"></i> JavaScript ES6</div>
+                        <div class="marquee-item"><i class="devicon-photoshop-plain colored"></i> Photoshop</div>
+                        <div class="marquee-item"><i class="devicon-illustrator-plain colored"></i> Illustrator</div>
+
                     </div>
+
+                    <!-- Bottom Row: Right to Left -->
                     <div class="marquee-track track-right-to-left">
-                        <div class="marquee-item"><span class="m-dot">◆</span> User Research</div>
-                        <div class="marquee-item"><span class="m-dot">▲</span> HTML</div>
-                        <div class="marquee-item"><span class="m-dot">■</span> CSS</div>
-                        <div class="marquee-item"><span class="m-dot">✦</span> Asset Design</div>
-                        <div class="marquee-item"><span class="m-dot">▰</span> Javascript</div>
-                        <div class="marquee-item"><span class="m-dot">●</span> User Flows</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> Design Systems</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> User Research</div>
-                        <div class="marquee-item"><span class="m-dot">▲</span> HTML</div>
-                        <div class="marquee-item"><span class="m-dot">■</span> CSS</div>
-                        <div class="marquee-item"><span class="m-dot">✦</span> Asset Design</div>
-                        <div class="marquee-item"><span class="m-dot">▰</span> Javascript</div>
-                        <div class="marquee-item"><span class="m-dot">●</span> User Flows</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> Design Systems</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> User Research</div>
-                        <div class="marquee-item"><span class="m-dot">▲</span> HTML</div>
-                        <div class="marquee-item"><span class="m-dot">■</span> CSS</div>
-                        <div class="marquee-item"><span class="m-dot">✦</span> Asset Design</div>
-                        <div class="marquee-item"><span class="m-dot">▰</span> Javascript</div>
-                        <div class="marquee-item"><span class="m-dot">●</span> User Flows</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> Design Systems</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> User Research</div>
-                        <div class="marquee-item"><span class="m-dot">▲</span> HTML</div>
-                        <div class="marquee-item"><span class="m-dot">■</span> CSS</div>
-                        <div class="marquee-item"><span class="m-dot">✦</span> Asset Design</div>
-                        <div class="marquee-item"><span class="m-dot">▰</span> Javascript</div>
-                        <div class="marquee-item"><span class="m-dot">●</span> User Flows</div>
-                        <div class="marquee-item"><span class="m-dot">◆</span> Design Systems</div>
+                        <div class="marquee-item"><i class="devicon-html5-plain colored"></i> HTML5</div>
+                        <div class="marquee-item"><i class="devicon-css3-plain colored"></i> CSS3</div>
+                        <div class="marquee-item"><i class="devicon-git-plain colored"></i> Git</div>
+                        <div class="marquee-item"><i class="devicon-github-original"></i> GitHub</div>
+
+                        <div class="marquee-item"><i class="devicon-windows11-original colored"></i> Windows OS</div>
+                        <div class="marquee-item"><i class="devicon-canva-original colored"></i> Canva</div>
+                        <div class="marquee-item"><i class="devicon-vscode-plain colored"></i> VS Code</div>
+                        <!-- Duplicate set to keep the infinite loop seamless -->
+                        <div class="marquee-item"><i class="devicon-html5-plain colored"></i> HTML5</div>
+                        <div class="marquee-item"><i class="devicon-css3-plain colored"></i> CSS3</div>
+                        <div class="marquee-item"><i class="devicon-git-plain colored"></i> Git</div>
+                        <div class="marquee-item"><i class="devicon-github-original"></i> GitHub</div>
+
+                        <div class="marquee-item"><i class="devicon-windows11-original colored"></i> Windows OS</div>
+                        <div class="marquee-item"><i class="devicon-canva-original colored"></i> Canva</div>
+                        <div class="marquee-item"><i class="devicon-vscode-plain colored"></i> VS Code</div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Experience Section -->
         <section id="experience" class="section-padding">
             <div class="container">
-                <h2 class="section-title reveal">02 / Experience</h2>
+                <h2 class="section-title reveal">02 / Experience & Leadership</h2>
                 <div class="exp-grid reveal">
                     <div class="exp-card hover-target">
-                        <div class="exp-img-wrap"><img src="pm.jpg" alt="PM"></div>
+                        <div class="exp-img-wrap"><img src="pm.jpg" alt="Project Manager"></div>
                         <div class="exp-content">
-                            <h3>Project Manager</h3>
-                            <p>Directing the UI/UX architecture and interactive user flows for "Clean Sweep," a gamified
-                                mobile capstone. My focus is translating complex environmental data pipelines into
-                                highly intuitive mobile interfaces that make waste segregation engaging and simple for
-                                everyday users.</p>
-                            <div class="tech-stack"><span>2026</span></div>
+                            <span class="exp-badge">2026 — ACTIVE</span>
+                            <h3>Project Manager & Lead UX</h3>
+                            <p class="exp-company">Clean Sweep (Gamified Waste Segregation Mobile App)</p>
+                            <p>Directing UI/UX architecture and interactive flows for an environmental capstone
+                                application. Translating multi-step waste processing data into an approachable mobile
+                                layout.</p>
+                            <div class="tech-stack"><span>Figma</span><span>Sprint Planning</span><span>UX Flow</span>
+                            </div>
                         </div>
                     </div>
                     <div class="exp-card hover-target">
-                        <div class="exp-img-wrap"><img src="gameartist.jpg" alt="Artist"></div>
+                        <div class="exp-img-wrap"><img src="gameartist.jpg" alt="Lead Game Artist"></div>
                         <div class="exp-content">
-                            <h3>Lead Game Artist</h3>
-                            <p>Served as the creative anchor for Bakunawa Studios. Managed the visual identity,
-                                interactive layout wireframes, and menu system architectures for our interactive gaming
-                                titles, successfully blending engaging themes with clean product usability standards.
-                            </p>
-                            <div class="tech-stack"><span>2025</span></div>
+                            <span class="exp-badge">2025</span>
+                            <h3>Lead Game Artist & UI Designer</h3>
+                            <p class="exp-company">Bakunawa Studios</p>
+                            <p>Supervised visual brand identities, HUD wireframing, and interactive menus for studio
+                                releases. Standardized visual assets for performance and screen legibility.</p>
+                            <div class="tech-stack"><span>Asset Pipelines</span><span>HUD UI</span><span>Canva</span>
+                            </div>
                         </div>
                     </div>
                     <div class="exp-card hover-target">
-                        <div class="exp-img-wrap"><img src="bigj.png" alt="Dev"></div>
+                        <div class="exp-img-wrap"><img src="bigj.png" alt="Lead Developer"></div>
                         <div class="exp-content">
+                            <span class="exp-badge">2024</span>
                             <h3>Lead Developer</h3>
-                            <p>Designed and engineered the user experience layout for a supply-chain e-commerce
-                                platform. Focused heavily on high-fidelity responsive wireframes, user testing mobile
-                                navigation menus, and optimizing user checkout funnels to maximize conversion rates.</p>
-                            <div class="tech-stack"><span>2024</span></div>
+                            <p class="exp-company">BigJ Steel Fabrication</p>
+                            <p>Engineered responsive wireframes and product showcase catalogs. Optimized catalog layout
+                                architecture to streamline inbound inquiries and order conversions.</p>
+                            <div class="tech-stack"><span>PHP</span><span>MySQL</span><span>CSS Layouts</span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Selected Works Section -->
         <section id="works" class="works section-padding">
             <div class="container">
                 <h2 class="section-title reveal">03 / Selected Works</h2>
 
+                <!-- Category 1: Systems & Platforms (Carousel with Queue-Pal) -->
                 <div class="category-header-wrap">
-                    <h3 class="sub-heading horizontal-heading-pad">// System & Platforms</h3>
+                    <h3 class="sub-heading horizontal-heading-pad">// Systems, Queue Engines & Web Platforms</h3>
+                    <div class="carousel-nav-controls">
+                        <button class="carousel-arrow prev-arrow hover-target" aria-label="Previous Slide">←</button>
+                        <button class="carousel-arrow next-arrow hover-target" aria-label="Next Slide">→</button>
+                    </div>
                 </div>
                 <div class="carousel-container reveal">
                     <div class="works-grid adaptive-carousel">
-                        <a href="https://www.figma.com/proto/u3kpMfiMowgjjhKNxmIbAZ/FinalBigJ?node-id=0-1&t=xKHRf4FBxbcVnSpt-1"
-                            target="_blank" class="featured-card hover-target">
+
+                        <!-- Queue-Pal -->
+                        <a href="https://github.com/hvnmrk/Queue-Pal" target="_blank" rel="noopener"
+                            class="featured-card hover-target card-highlight">
                             <div class="card-img-wrap">
-                                <img src="bigj.png" alt="bigj.store">
+                                <img src="ASSETS.jpg" alt="Queue-Pal System Preview">
+                                <div class="card-overlay">View Source Code ↗</div>
+                            </div>
+                            <div class="card-content">
+                                <h4>Queue-Pal</h4>
+                                <span class="card-role">Lead System Developer / UI Architect</span>
+                                <p>A digital queuing and queue ticket management platform designed to eliminate waiting
+                                    bottlenecks, track live queue statuses, and streamline customer service routing.</p>
+                                <div class="tech-stack">
+                                    <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Tailwind</span><span>System
+                                        Logic</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- bigj.store -->
+                        <a href="https://www.figma.com/proto/u3kpMfiMowgjjhKNxmIbAZ/FinalBigJ?node-id=0-1&t=xKHRf4FBxbcVnSpt-1"
+                            target="_blank" rel="noopener" class="featured-card hover-target">
+                            <div class="card-img-wrap">
+                                <img src="bigj.png" alt="bigj.store platform">
                                 <div class="card-overlay">Launch Prototype ↗</div>
                             </div>
                             <div class="card-content">
                                 <h4>bigj.store</h4>
-                                <span class="card-role">Lead Developer</span>
-                                <p>Engineered a high-fidelity UI/UX e-commerce platform prototype designed to streamline
-                                    mobile shopping funnels and simplify custom navigation data pipelines.</p>
+                                <span class="card-role">Lead Developer & UI Designer</span>
+                                <p>High-fidelity responsive e-commerce web prototype engineered to streamline purchasing
+                                    pipelines and simplify quote transactions.</p>
                                 <div class="tech-stack">
-                                    <span>HTML</span><span>PHP</span><span>CSS</span><span>JS</span><span>MYSQL</span>
+                                    <span>HTML</span><span>PHP</span><span>CSS</span><span>JS</span><span>MySQL</span>
                                 </div>
                             </div>
                         </a>
-                        <a href="https://janariplayroom.netlify.app/" target="_blank"
+
+                        <!-- ARTA Survey -->
+                        <a href="https://github.com/hvnmrk" target="_blank" rel="noopener"
                             class="featured-card hover-target">
                             <div class="card-img-wrap">
-                                <img src="janari.png" alt="Janari Playroom">
-                                <div class="card-overlay">Live Site ↗</div>
-                            </div>
-                            <div class="card-content">
-                                <h4>Janari Playroom</h4>
-                                <span class="card-role">Full-Stack Developer</span>
-                                <p>Programmed an interactive gaming room web portal to deliver fluid frontend state
-                                    management, smooth deployment scaling, and an immersive user interface.</p>
-                                <div class="tech-stack"> <span>Ibis Paint</span><span>Canva</span><span>Alight
-                                        Motion</span></div>
-                            </div>
-                        </a>
-                        <a href="" class="featured-card hover-target">
-                            <div class="card-img-wrap">
-                                <img src="arta.png" alt="ARTA Survey">
+                                <img src="arta.png" alt="ARTA Survey Application">
+                                <div class="card-overlay">View Repository ↗</div>
                             </div>
                             <div class="card-content">
                                 <h4>ARTA Client Satisfaction Survey</h4>
-                                <span class="card-role">Frontend Developer</span>
-                                <p>A web-based Client Satisfaction Survey system for the Anti-Red Tape Authority (ARTA)
-                                    under Valenzuela City. Features anonymous feedback tracking and custom mobile QR
-                                    integration.</p>
+                                <span class="card-role">Frontend & Database Developer</span>
+                                <p>Citizen feedback and satisfaction tracking system adhering to Anti-Red Tape Authority
+                                    standards with QR verification workflows.</p>
                                 <div class="tech-stack">
-                                    <span>HTML</span><span>Tailwind
-                                        CSS</span><span>CSS</span><span>JS</span><span>MYSQL</span>
+                                    <span>Tailwind</span><span>PHP</span><span>MySQL</span><span>QR API</span>
                                 </div>
                             </div>
                         </a>
-                        <a href="https://github.com/stephx6/Demand-Rank-Website.git" class="featured-card hover-target">
+
+                        <!-- SalesPredictor ML -->
+                        <a href="https://github.com/stephx6/Demand-Rank-Website.git" target="_blank" rel="noopener"
+                            class="featured-card hover-target">
                             <div class="card-img-wrap">
-                                <img src="mml.png" alt="SalesPredictor ML">
-                                <div class="card-overlay">View Source Code ↗</div>
+                                <img src="mml.png" alt="SalesPredictor ML Dashboard">
+                                <div class="card-overlay">View Code ↗</div>
                             </div>
                             <div class="card-content">
-                                <h4>SalesPredictor - ML Forecasting</h4>
-                                <span class="card-role">Project Manager</span>
-                                <p>A machine learning dashboard for predicting top-selling products using Linear
-                                    Regression. Implements comprehensive analytical metric visualization maps (MAE, R²
-                                    Score).</p>
-                                <div class="tech-stack"><span>Machine Learning</span><span>Python</span></div>
+                                <h4>SalesPredictor ML</h4>
+                                <span class="card-role">Project Manager & Analyst</span>
+                                <p>Predictive analytics dashboard tracking sales demand using machine learning
+                                    regression with visual MAE and R² evaluation metrics.</p>
+                                <div class="tech-stack">
+                                    <span>Python</span><span>Scikit-Learn</span><span>Analytics</span>
+                                </div>
                             </div>
                         </a>
+
                     </div>
                 </div>
 
+                <!-- Category 2: Interaction Design & Games -->
                 <div class="category-header-wrap">
-                    <h3 class="sub-heading horizontal-heading-pad">// Interaction Design & Prototyping</h3>
+                    <h3 class="sub-heading horizontal-heading-pad">// Interaction Design & Game Experiences</h3>
+                    <div class="carousel-nav-controls">
+                        <button class="carousel-arrow prev-arrow hover-target" aria-label="Previous Slide">←</button>
+                        <button class="carousel-arrow next-arrow hover-target" aria-label="Next Slide">→</button>
+                    </div>
                 </div>
                 <div class="carousel-container reveal">
                     <div class="works-grid adaptive-carousel">
-                        <a href="https://clean-sweep-landing-page.vercel.app/" target="_blank"
+                        <a href="https://clean-sweep-landing-page.vercel.app/" target="_blank" rel="noopener"
                             class="featured-card hover-target">
-                            <div class="card-img-wrap"><img src="cleansweep.jpg" alt="Clean Sweep">
+                            <div class="card-img-wrap">
+                                <img src="cleansweep.jpg" alt="Clean Sweep">
                                 <div class="card-overlay">Play Game ↗</div>
                             </div>
                             <div class="card-content">
-                                <h4>Clean Sweep (Ongoing Capstone)</h4>
-                                <span class="card-role">Project Manager</span>
-                                <p>Directing the architectural pipeline of a capstone mobile game designed to bridge the
-                                    gap of ecological waste segregation.</p>
-                                <div class="tech-stack"><span>Figma</span></div>
+                                <h4>Clean Sweep (Capstone)</h4>
+                                <span class="card-role">Project Manager & UX</span>
+                                <p>Interactive environmental awareness game encouraging correct segregation through
+                                    responsive touch-control feedback.</p>
+                                <div class="tech-stack"><span>Figma</span><span>Vercel</span><span>Game UX</span></div>
                             </div>
                         </a>
-                        <a href="https://bakunawa-studios.itch.io/shadow-of-the-past" target="_blank"
+                        <a href="https://bakunawa-studios.itch.io/shadow-of-the-past" target="_blank" rel="noopener"
                             class="featured-card hover-target">
-                            <div class="card-img-wrap"><img src="shadows.png" alt="Shadow of the Past">
+                            <div class="card-img-wrap">
+                                <img src="shadows.png" alt="Shadow of the Past">
                                 <div class="card-overlay">Play on Itch.io ↗</div>
                             </div>
                             <div class="card-content">
                                 <h4>Shadow of the Past</h4>
                                 <span class="card-role">Asset Designer & Layout Artist</span>
-                                <p>Formed the complete spatial map layout and game environmental layers for an
-                                    atmospheric slasher experience.</p>
-                                <div class="tech-stack"><span>Figma</span><span>Ibis
-                                        Paint</span><span>Canva</span><span>Alights
-                                        Motion</span></div>
+                                <p>Complete spatial world map layouts and environmental layer compositions for an
+                                    atmospheric narrative title.</p>
+                                <div class="tech-stack"><span>Figma</span><span>Digital Art</span><span>Level UI</span>
+                                </div>
                             </div>
                         </a>
-                        <a href="https://bakunawa-studios.itch.io/buwaya-catch" target="_blank"
+                        <a href="https://bakunawa-studios.itch.io/buwaya-catch" target="_blank" rel="noopener"
                             class="featured-card hover-target">
-                            <div class="card-img-wrap"><img src="buwayacatch.jpg" alt="Buwaya Catch">
+                            <div class="card-img-wrap">
+                                <img src="buwayacatch.jpg" alt="Buwaya Catch">
                                 <div class="card-overlay">Play on Itch.io ↗</div>
                             </div>
                             <div class="card-content">
                                 <h4>Buwaya Catch</h4>
                                 <span class="card-role">Lead Game Artist</span>
-                                <p>Sketched original characters and dynamic UI layouts for a fast-paced arcade-style
-                                    title.</p>
-                                <div class="tech-stack"><span>Figma</span><span>Ibis
-                                        Paint</span><span>Canva</span><span>Alight
-                                        Motion</span></div>
+                                <p>Original character sprite work, dynamic arcade typography, and animated game user
+                                    interfaces.</p>
+                                <div class="tech-stack"><span>Canva</span><span>Illustration</span><span>Arcade
+                                        UX</span></div>
                             </div>
                         </a>
-                        <a href="https://youtu.be/i_cAPqMGlaM" target="_blank" class="featured-card hover-target">
+                        <a href="https://youtu.be/i_cAPqMGlaM" target="_blank" rel="noopener"
+                            class="featured-card hover-target">
                             <div class="card-img-wrap">
                                 <img src="pisopolitiko.jpg" alt="Piso Politiko">
-                                <div class="card-overlay">View Demo Reel ↗</div>
+                                <div class="card-overlay">View Demo ↗</div>
                             </div>
                             <div class="card-content">
                                 <h4>Piso Politiko</h4>
                                 <span class="card-role">Lead Game Artist</span>
-                                <p>Designed original visual assets for this tabletop/hybrid satirical political game,
-                                    balancing analog play with digital interface design.</p>
-                                <div class="tech-stack">
-                                    <span>Ibis Paint</span><span>Canva</span><span>Alight Motion</span>
-                                </div>
-                            </div> <!-- 🌟 FIXED: This closing div was missing, which caused the text to disappear! -->
+                                <p>Satirical card and hybrid tabletop system integrating clean layout cards with
+                                    cohesive typography hierarchy.</p>
+                                <div class="tech-stack"><span>Asset Design</span><span>Card Layouts</span></div>
+                            </div>
                         </a>
                     </div>
-                    <div class="category-header-wrap">
-                        <h3 class="sub-heading horizontal-heading-pad">// Motion Systems & Multimedia</h3>
-                    </div>
-                    <div class="carousel-container reveal">
-                        <div class="works-grid adaptive-carousel">
-                            <div class="featured-card video-card hover-video-card" data-video-id="player1">
-                                <div class="card-img-wrap video-embed">
-                                    <iframe id="player1"
-                                        src="https://www.youtube.com/embed/qbWtPP6ibtw?enablejsapi=1&autoplay=0&mute=1&controls=0&loop=1&playlist=qbWtPP6ibtw"
-                                        title="Motion Graphics Showreel 1" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                                <div class="card-content">
-                                    <h4>Seraph</h4>
-                                    <span class="card-role">Video Editor & Animator</span>
-                                    <p>Rendered a fast-paced motion design showcase utilizing custom audio mapping
-                                        curves,
-                                        technical overlay masking, and tight visual synchronization loops.</p>
-                                </div>
-                            </div>
-                            <div class="featured-card video-card hover-video-card" data-video-id="player2">
-                                <div class="card-img-wrap video-embed">
-                                    <iframe id="player2"
-                                        src="https://www.youtube.com/embed/oiOJSVxOFms?enablejsapi=1&autoplay=0&mute=1&controls=0&loop=1&playlist=oiOJSVxOFms"
-                                        title="Motion Graphics Showreel 2" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                                <div class="card-content">
-                                    <h4>Byte&Sip Reel</h4>
-                                    <span class="card-role">Video Editor</span>
-                                    <p>Created a punchy commercial promotional video utilizing complex frame filter
-                                        treatments, pacing shifts, and custom kinetic motion tracking typography
-                                        presets.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
 
-                    <a href="https://www.facebook.com/punturinshssg/videos/2087369451616590/" target="_blank"
-                        class="featured-card award-card"
-                        style="text-decoration: none; margin-top: 40px; margin-bottom: 40px;">
-                        <div class="card-img-wrap">
-                            <img src="unicef.jpg" alt="UNICEF Shortfilm Award">
-                            <div class="card-overlay">Watch Film ↗</div>
+                <!-- Category 3: Motion Graphics -->
+                <div class="category-header-wrap">
+                    <h3 class="sub-heading horizontal-heading-pad">// Motion Graphics & Audio-Visual Systems</h3>
+                </div>
+                <div class="carousel-container reveal">
+                    <div class="works-grid">
+                        <div class="featured-card video-card hover-video-card" data-video-id="player1">
+                            <div class="card-img-wrap video-embed">
+                                <iframe id="player1"
+                                    src="https://www.youtube.com/embed/qbWtPP6ibtw?enablejsapi=1&autoplay=0&mute=1&controls=0&loop=1&playlist=qbWtPP6ibtw"
+                                    title="Motion Graphics Showreel 1" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-content">
+                                <h4>Seraph</h4>
+                                <span class="card-role">Video Editor & Animator</span>
+                                <p>Rapid motion graphics edit built around sound transients, kinetic text overlays, and
+                                    masking sweeps.</p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <h4>UNICEF Shortfilm Contest</h4>
-                            <span class="card-role">Best in Editing, Sound & Participatory Video</span>
-                            <p>Awarded 1st Runner Up in the 2022 Citywide competition for excellence in film
-                                production and
-                                storytelling.</p>
-                            <div class="tech-stack"><span>2022</span><span>Award</span></div>
-                        </div>
-                    </a>
-
-                    <div class="category-header-wrap">
-                        <h3 class="sub-heading horizontal-heading-pad">// Visual Systems & Asset Design</h3>
-                    </div>
-                    <div class="carousel-container reveal">
-                        <div class="posters-grid adaptive-carousel">
-                            <div class="featured-card hover-target">
-                                <div class="card-img-wrap poster-img"><img src="Coffee.png" alt="Gusto Ko Magkape">
-                                </div>
-                                <div class="card-content">
-                                    <h4>Gusto Ko Magkape, Magkapera</h4>
-                                    <span class="card-role">Graphic Designer</span>
-                                    <p>Developed a typography-driven promotional concept for a student activity,
-                                        leveraging
-                                        clever cultural wordplay alongside custom 3D depth asset lighting.</p>
-                                    <div class="tech-stack"><span>Photoshop</span></div>
-                                </div>
+                        <div class="featured-card video-card hover-video-card" data-video-id="player2">
+                            <div class="card-img-wrap video-embed">
+                                <iframe id="player2"
+                                    src="https://www.youtube.com/embed/oiOJSVxOFms?enablejsapi=1&autoplay=0&mute=1&controls=0&loop=1&playlist=oiOJSVxOFms"
+                                    title="Motion Graphics Showreel 2" allowfullscreen></iframe>
                             </div>
-                            <div class="featured-card hover-target">
-                                <div class="card-img-wrap poster-img"><img src="ByteSip1.jpg" alt="Byte & Sip Menu">
-                                </div>
-                                <div class="card-content">
-                                    <h4>Byte & Sip: Menu Display</h4>
-                                    <span class="card-role">Visual Designer</span>
-                                    <p>Designed a vibrant, high-energy promotional food menu display poster for a
-                                        specialized IT department campus event activity utilizing custom neon
-                                        layering
-                                        filters.</p>
-                                    <div class="tech-stack"><span>Photoshop</span><span>Canva</span></div>
-                                </div>
-                            </div>
-                            <div class="featured-card hover-target">
-                                <div class="card-img-wrap poster-img"><img src="ByteSip2.jpg" alt="Level Unlocked">
-                                </div>
-                                <div class="card-content">
-                                    <h4>Level Unlocked Teaser</h4>
-                                    <span class="card-role">Visual Designer</span>
-                                    <p>Produced a retro-synthwave class project invitation design featuring an
-                                        illuminated
-                                        perspective matrix grid, a 3D console shell vector layer, and custom glowing
-                                        typography headers.</p>
-                                    <div class="tech-stack"><span>Photoshop</span><span>Canva</span></div>
-                                </div>
-                            </div>
-                            <div class="featured-card hover-target">
-                                <div class="card-img-wrap poster-img"><img src="Movie Poster Mockup.png"
-                                        alt="Transport Input SSH"></div>
-                                <div class="card-content">
-                                    <h4>Transport Input SSH</h4>
-                                    <span class="card-role">Graphic Designer</span>
-                                    <p>Combined network administration subject infrastructure concepts with layered
-                                        typographic portrait masking for a high-contrast creative course assignment.
-                                    </p>
-                                    <div class="tech-stack"><span>Photoshop</span></div>
-                                </div>
+                            <div class="card-content">
+                                <h4>Byte&Sip Reel</h4>
+                                <span class="card-role">Video Editor</span>
+                                <p>Fast-cut commercial social spot using dynamic zooms, frame treatments, and animated
+                                    graphic bugs.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Award Banner -->
+                <a href="https://www.facebook.com/punturinshssg/videos/2087369451616590/" target="_blank" rel="noopener"
+                    class="featured-card award-card reveal"
+                    style="text-decoration: none; margin: 30px auto; max-width: 1200px;">
+                    <div class="card-img-wrap">
+                        <img src="unicef.jpg" alt="UNICEF Award">
+                        <div class="card-overlay">Watch Film ↗</div>
+                    </div>
+                    <div class="card-content">
+                        <h4>UNICEF Shortfilm Contest — 1st Runner Up</h4>
+                        <span class="card-role">Best in Editing, Sound & Participatory Storytelling</span>
+                        <p>Awarded top citation in citywide competition for exceptional documentary sound staging and
+                            visual editing.</p>
+                        <div class="tech-stack"><span>Award Citation</span><span>Audio & Edit</span></div>
+                    </div>
+                </a>
+
+                <!-- Category 4: Posters (Carousel) -->
+                <div class="category-header-wrap">
+                    <h3 class="sub-heading horizontal-heading-pad">// Visual Identity & Poster Work</h3>
+                    <div class="carousel-nav-controls">
+                        <button class="carousel-arrow prev-arrow hover-target" aria-label="Previous Slide">←</button>
+                        <button class="carousel-arrow next-arrow hover-target" aria-label="Next Slide">→</button>
+                    </div>
+                </div>
+                <div class="carousel-container reveal">
+                    <div class="posters-grid adaptive-carousel">
+                        <div class="featured-card hover-target">
+                            <div class="card-img-wrap poster-img"><img src="Coffee.png" alt="Gusto Ko Magkape"></div>
+                            <div class="card-content">
+                                <h4>Gusto Ko Magkape, Magkapera</h4>
+                                <span class="card-role">Typography & Concept Art</span>
+                                <div class="tech-stack"><span>Photoshop</span></div>
+                            </div>
+                        </div>
+                        <div class="featured-card hover-target">
+                            <div class="card-img-wrap poster-img"><img src="ByteSip1.jpg" alt="Byte & Sip Menu"></div>
+                            <div class="card-content">
+                                <h4>Byte & Sip: Menu Display</h4>
+                                <span class="card-role">Brand Display Poster</span>
+                                <div class="tech-stack"><span>Photoshop</span><span>Canva</span></div>
+                            </div>
+                        </div>
+                        <div class="featured-card hover-target">
+                            <div class="card-img-wrap poster-img"><img src="ByteSip2.jpg" alt="Level Unlocked"></div>
+                            <div class="card-content">
+                                <h4>Level Unlocked Teaser</h4>
+                                <span class="card-role">Poster Compositor</span>
+                                <div class="tech-stack"><span>Synthwave Aesthetic</span></div>
+                            </div>
+                        </div>
+                        <div class="featured-card hover-target">
+                            <div class="card-img-wrap poster-img"><img src="Movie Poster Mockup.png"
+                                    alt="Transport Input SSH"></div>
+                            <div class="card-content">
+                                <h4>Transport Input SSH</h4>
+                                <span class="card-role">Editorial Tech Art</span>
+                                <div class="tech-stack"><span>Photoshop</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
+        <!-- Certificates Section -->
         <section id="certificates" class="certificates section-padding">
             <div class="container">
-                <h2 class="section-title reveal">04 / Badges & Certifications</h2>
+                <h2 class="section-title reveal">04 / Cisco Badges & Certifications</h2>
                 <div class="cert-list">
                     <div class="cert-item reveal hover-target">
                         <div class="cert-year">2025</div>
                         <div class="cert-details">
                             <h3>Network Support and Security</h3>
-                            <p>Issued by Cisco</p>
+                            <p>Issued by Cisco Credentialing</p>
                         </div>
                         <a href="https://www.credly.com/badges/ee14dda0-a4f9-4057-ada1-342f13bb75c2" target="_blank"
-                            class="cert-link">Verify ↗</a>
+                            rel="noopener" class="cert-link">Verify ↗</a>
                     </div>
                     <div class="cert-item reveal hover-target">
                         <div class="cert-year">2025</div>
                         <div class="cert-details">
                             <h3>Networking Basics</h3>
-                            <p>Issued by Cisco</p>
+                            <p>Issued by Cisco Credentialing</p>
                         </div>
                         <a href="https://www.credly.com/badges/be168498-9a7a-43eb-9ce9-581c54ed4082" target="_blank"
-                            class="cert-link">Verify ↗</a>
+                            rel="noopener" class="cert-link">Verify ↗</a>
                     </div>
                     <div class="cert-item reveal hover-target">
                         <div class="cert-year">2025</div>
                         <div class="cert-details">
                             <h3>Networking Devices and Initial Configuration</h3>
-                            <p>Issued by Cisco</p>
+                            <p>Issued by Cisco Credentialing</p>
                         </div>
                         <a href="https://www.credly.com/badges/5170fb1d-3f39-49b5-8940-b63f49623052" target="_blank"
-                            class="cert-link">Verify ↗</a>
+                            rel="noopener" class="cert-link">Verify ↗</a>
                     </div>
                     <div class="cert-item reveal hover-target">
                         <div class="cert-year">2025</div>
                         <div class="cert-details">
                             <h3>Network Addressing and Basic Troubleshooting</h3>
-                            <p>Issued by Cisco</p>
+                            <p>Issued by Cisco Credentialing</p>
                         </div>
                         <a href="https://www.credly.com/badges/4cb36926-5e14-4dd2-a9ea-f0436b3eb674" target="_blank"
-                            class="cert-link">Verify ↗</a>
+                            rel="noopener" class="cert-link">Verify ↗</a>
                     </div>
+
                 </div>
-                <div class="btn-container reveal" style="text-align: center; margin-top: 50px;">
-                    <a href="https://www.credly.com/users/tomaquin-mark-b/badges#credly" target="_blank"
-                        class="magnetic-btn hover-target">
-                        <span class="btn-text">View All Badges on Credly</span>
-                    </a>
-                </div>
-            </div>
         </section>
 
+        <!-- Resume Section -->
         <section id="resume" class="resume section-padding">
             <div class="container">
-                <h2 class="reveal resume-title">Resume</h2>
-                <p class="reveal resume-subtitle">Creative blueprint summary. Download the PDF for complete
-                    presentation.</p>
+                <h2 class="section-title reveal">05 / Professional Resume</h2>
                 <div class="resume-split-grid reveal">
                     <div class="resume-snapshot-card">
                         <div>
-                            <p class="profile-archive-label">// PROFILE ARCHIVE</p>
+                            <p class="profile-archive-label">// CANDIDATE PROFILE ARCHIVE</p>
                             <div class="resume-header-info">
                                 <div>
                                     <h3 class="resume-name">Mark Tomaquin</h3>
-                                    <p class="resume-tagline">Aspiring UI/UX Designer</p>
-                                    <p class="accent resume-disciplines">(User Research / Wireframing / Prototyping)</p>
+                                    <p class="resume-tagline">UI/UX Designer & IT Support Generalist</p>
+                                    <p class="accent resume-disciplines">Wireframing • Design Systems • Troubleshooting
+                                    </p>
                                 </div>
                                 <div class="resume-coordinates">
-                                    <span class="coordinate-badge">📍 Valenzuela, PH</span>
+                                    <span class="coordinate-badge">📍 Valenzuela City, PH</span>
                                     <span class="coordinate-badge">✉ tomaquinmark123@gmail.com</span>
                                 </div>
                             </div>
                             <div class="resume-objective-block">
-                                <h4 class="resume-section-subheading">Professional Objective</h4>
-                                <p class="resume-objective-text">BSIT student integrating frontend framework logic with
-                                    user-centered product design methodologies. Seeking UI/UX design roles, internships,
-                                    or product commissions to deliver interactive high-fidelity wireframes, mapping user
-                                    research, and prototyping data-driven layouts.</p>
+                                <h4 class="resume-section-subheading">Core Career Objective</h4>
+                                <p class="resume-objective-text">
+                                    Final-year BSIT student combining user interface structuring with solid systems
+                                    fundamentals. Qualified for on-the-job training in Desktop & IT Technical Support,
+                                    UI/UX design, and frontend feature delivery.
+                                </p>
                             </div>
                         </div>
                         <div class="resume-card-footer">
                             <div>
-                                <h4 class="resume-footer-heading">Focus Matrix</h4>
-                                <h5 class="resume-institution-title">Information Technology</h5>
-                                <p class="resume-campus-detail">PLV Campus Cluster</p>
-                                <p class="resume-core-node"><span class="node-dot"></span>Design // Systems Core</p>
+                                <h4 class="resume-footer-heading">Education Cluster</h4>
+                                <h5 class="resume-institution-title">Pamantasan ng Lungsod ng Valenzuela</h5>
+                                <p class="resume-campus-detail">Bachelor of Science in Information Technology</p>
+                                <p class="resume-core-node"><span class="node-dot"></span>Active Status</p>
                             </div>
                             <div>
-                                <h4 class="resume-footer-heading">Expertise Disciplines</h4>
+                                <h4 class="resume-footer-heading">Primary Tooling</h4>
                                 <div class="resume-skills-pill-wrapper">
                                     <span class="skill-pill">Figma UI</span>
-                                    <span class="skill-pill">Wireframing</span>
-                                    <span class="skill-pill">Prototyping</span>
-                                    <span class="skill-pill">User Research</span>
-                                    <span class="skill-pill">User Flows</span>
-                                    <span class="skill-pill">Design Systems</span>
+                                    <span class="skill-pill">HTML5/CSS3</span>
+                                    <span class="skill-pill">Tailwind</span>
+                                    <span class="skill-pill">JavaScript</span>
+                                    <span class="skill-pill">PHP & MySQL</span>
+                                    <span class="skill-pill">PC Diagnostics</span>
+                                    <span class="skill-pill">Figma UI</span>
+                                    <span class="skill-pill">HTML5/CSS3</span>
+                                    <span class="skill-pill">Tailwind</span>
+                                    <span class="skill-pill">JavaScript</span>
+                                    <span class="skill-pill">PHP & MySQL</span>
+                                    <span class="skill-pill">PC Diagnostics</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="resume-download-card">
-                        <h3 class="download-card-title">View Resume</h3>
-                        <p class="download-card-desc">Access the full, comprehensive copy containing detailed pipeline
-                            processes and workflow breakdowns.</p>
+                        <h3 class="download-card-title">Download Complete CV</h3>
+                        <p class="download-card-desc">Obtain the full printable document including detailed university
+                            projects, character references, and technical course milestones.</p>
                         <a href="https://docs.google.com/document/d/10f1Wgao0RR8GMOBa8PI4tPElMwUmHW5-02g3Ktj0zHk/export?format=pdf"
                             class="hover-target download-action-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                                style="margin-right: 8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -566,17 +719,19 @@
                         </a>
                     </div>
                 </div>
+            </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="contact section-padding">
-            <div class="container" style="text-align: center;">
-                <h2 class="reveal glitch-text" data-text="Get In Touch">Get In Touch</h2>
-                <p class="reveal contact-desc">Looking for an internship candidate or want to collaborate? I'd love to
-                    hear from you!</p>
+            <div class="container">
+                <h2 class="section-title reveal text-center">06 / Connect & Initialize</h2>
+                <p class="reveal contact-desc text-center">Inquire regarding internships, web projects, or technical
+                    opportunities.</p>
 
                 <div class="contact-split-grid reveal">
                     <div class="contact-terminal-column">
-                        <h3 class="sub-heading">// Contact Information</h3>
+                        <h3 class="sub-heading">// Terminal Console</h3>
                         <div class="mock-terminal">
                             <div class="terminal-header">
                                 <div class="terminal-buttons">
@@ -584,59 +739,64 @@
                                     <span class="t-dot yellow"></span>
                                     <span class="t-dot green"></span>
                                 </div>
-                                <div class="terminal-title">contact.terminal</div>
+                                <div class="terminal-title">tomaquin.terminal</div>
                             </div>
                             <div class="terminal-body">
-                                <div class="console-row"><span class="prompt">profile.html</span></div>
-                                <div class="console-output">Mark Tomaquin</div>
-                                <div class="console-row" style="margin-top: 20px;"><span
-                                        class="prompt">contact.html</span></div>
+                                <div class="console-row"><span class="prompt">$</span> <span class="command">cat
+                                        profile.json</span></div>
                                 <div class="console-data-block">
-                                    <div class="data-row"><span class="label">email:</span> <span
+                                    <div class="data-row"><span class="label">Candidate:</span> <span class="value">Mark
+                                            Tomaquin</span></div>
+                                    <div class="data-row"><span class="label">Location:</span> <span
+                                            class="value">Valenzuela City, Metro Manila</span></div>
+                                    <div class="data-row"><span class="label">Email:</span> <span
                                             class="value link-value"
                                             onclick="window.open('mailto:tomaquinmark123@gmail.com')">tomaquinmark123@gmail.com</span>
                                     </div>
-                                    <div class="data-row"><span class="label">github:</span> <span
+                                    <div class="data-row"><span class="label">GitHub:</span> <span
                                             class="value link-value"
-                                            onclick="window.open('https://github.com/marktomaquin', '_blank')">github.com/marktomaquin</span>
+                                            onclick="window.open('https://github.com/hvnmrk', '_blank')">github.com/hvnmrk</span>
                                     </div>
-                                    <div class="data-row"><span class="label">status:</span> <span
-                                            class="value accent">Available for Internship</span></div>
                                 </div>
                                 <button class="terminal-copy-btn hover-target"
-                                    onclick="navigator.clipboard.writeText('tomaquinmark123@gmail.com'); showToast();">Copy</button>
+                                    onclick="navigator.clipboard.writeText('tomaquinmark123@gmail.com'); showToast();">Copy
+                                    Email</button>
                             </div>
                         </div>
 
                         <div class="terminal-social-wrap">
-                            <h4 class="sub-heading">// Follow Me</h4>
+                            <h4 class="sub-heading">// Digital Handles</h4>
                             <div class="social-icon-row">
                                 <a href="mailto:tomaquinmark123@gmail.com" class="social-icon-btn hover-target"
-                                    aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
+                                    aria-label="Email">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path
                                             d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                         </path>
                                         <polyline points="22,6 12,13 2,6"></polyline>
-                                    </svg></a>
+                                    </svg>
+                                </a>
                                 <a href="https://www.linkedin.com/in/mark-tomaquin-2996b2260/" target="_blank"
-                                    class="social-icon-btn hover-target" aria-label="LinkedIn"><svg width="18"
-                                        height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    rel="noopener" class="social-icon-btn hover-target" aria-label="LinkedIn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path
                                             d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
                                         </path>
                                         <rect x="2" y="9" width="4" height="12"></rect>
                                         <circle cx="4" cy="4" r="2"></circle>
-                                    </svg></a>
-                                <a href="https://www.facebook.com/mark.tomaquin.2024" target="_blank"
-                                    class="social-icon-btn hover-target" aria-label="Facebook"><svg width="18"
-                                        height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/hvnmrk" target="_blank" rel="noopener"
+                                    class="social-icon-btn hover-target" aria-label="GitHub">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
                                         </path>
-                                    </svg></a>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -644,37 +804,29 @@
                     <div class="contact-form-column">
                         <form id="contact-form" class="secure-contact-form">
                             <div class="form-group">
-                                <label for="form-name">NAME *</label>
-                                <input type="text" id="form-name" name="name" placeholder="Your Name" required
+                                <label for="form-name">YOUR NAME *</label>
+                                <input type="text" id="form-name" name="name" placeholder="Enter your name" required
                                     class="hover-target">
                             </div>
                             <div class="form-group">
-                                <label for="form-email">EMAIL *</label>
-                                <input type="email" id="form-email" name="email" placeholder="Your Email" required
+                                <label for="form-email">YOUR EMAIL *</label>
+                                <input type="email" id="form-email" name="email" placeholder="Enter your email" required
                                     class="hover-target">
                             </div>
                             <div class="form-group">
                                 <label for="form-message">MESSAGE *</label>
-                                <textarea id="form-message" name="message" rows="6" placeholder="Your Message" required
+                                <textarea id="form-message" name="message" rows="5"
+                                    placeholder="Share inquiry details or project specifications..." required
                                     class="hover-target"></textarea>
                             </div>
-                            <button type="submit" class="form-submit-btn hover-target">Send Message</button>
+                            <button type="submit" class="form-submit-btn hover-target">Transmit Message ↗</button>
                         </form>
-                        <div class="secure-notice">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                                style="margin-right: 5px;">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                            Your information is secure and will not be shared with third parties.
-                        </div>
                     </div>
                 </div>
 
                 <div class="footer-bottom reveal">
-                    <p>&copy; 2026 Mark Tomaquin. All Systems Nominal.</p>
-                    <a href="#home" class="back-to-top hover-target">Back to Top ↑</a>
+                    <p>&copy; 2026 Mark Tomaquin. Built for High Availability.</p>
+                    <a href="#home" class="back-to-top hover-target">Return to Header ↑</a>
                 </div>
             </div>
         </section>
@@ -684,11 +836,12 @@
         <span class="toast-icon">✓</span>
         <span class="toast-message">Email copied to clipboard!</span>
     </div>
+
     <div id="email-modal" class="modal-overlay">
         <div class="modal-content">
-            <h3>Message Sent!</h3>
-            <p>Thanks for reaching out, Mark will get back to you shortly.</p>
-            <button id="close-modal" class="hover-target">Close</button>
+            <h3>Transmission Sent!</h3>
+            <p>Thank you for reaching out. Mark will follow up with you promptly.</p>
+            <button id="close-modal" class="hover-target">Acknowledge</button>
         </div>
     </div>
 
