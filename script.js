@@ -1,6 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. LTO-Style Interactive Business Card / Digital ID Flip ---
+    // --- 1. Soft Un-Blur Scroll Reveal Observer ---
+    const revealTargets = document.querySelectorAll('.reveal, .reveal-up, .reveal-left, .reveal-right');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+
+    // --- 2. Interactive Spotlight Mouse Glow ---
+    const spotlightCards = document.querySelectorAll('.spotlight-card');
+    spotlightCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // --- 3. 3D Tilt Dynamics for macOS Editor Windows ---
+    const tiltTargets = document.querySelectorAll('.tilt-target');
+    if (window.matchMedia("(pointer: fine)").matches) {
+        tiltTargets.forEach(target => {
+            target.addEventListener('mousemove', (e) => {
+                const rect = target.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateX = -(y / (rect.height / 2)) * 6;
+                const rotateY = (x / (rect.width / 2)) * 6;
+                target.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            target.addEventListener('mouseleave', () => {
+                target.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            });
+        });
+    }
+
+    // --- 4. 3D Flippable Digital ID Card ---
     const interactiveCard = document.getElementById('interactiveCard');
     if (interactiveCard) {
         interactiveCard.addEventListener('click', () => {
@@ -13,32 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 interactiveCard.classList.toggle('is-flipped');
             }
         });
-
-        if (window.matchMedia("(pointer: fine)").matches) {
-            interactiveCard.addEventListener('mousemove', (e) => {
-                if (!interactiveCard.classList.contains('is-flipped')) {
-                    const rect = interactiveCard.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-
-                    const rotateX = -(y / (rect.height / 2)) * 8;
-                    const rotateY = (x / (rect.width / 2)) * 8;
-
-                    interactiveCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                }
-            });
-
-            interactiveCard.addEventListener('mouseleave', () => {
-                if (!interactiveCard.classList.contains('is-flipped')) {
-                    interactiveCard.style.transform = `rotateX(0deg) rotateY(0deg)`;
-                } else {
-                    interactiveCard.style.transform = `rotateY(180deg)`;
-                }
-            });
-        }
     }
 
-    // --- 2. Sliding Carousel Engine with Mobile Touch-Swipe Detection ---
+    // --- 5. Projects Carousel Slider & Touch Gestures ---
     const carousels = document.querySelectorAll('.adaptive-carousel');
 
     carousels.forEach(track => {
@@ -62,9 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const style = window.getComputedStyle(track);
             const gap = parseFloat(style.gap) || 24;
             const containerWidth = container.getBoundingClientRect().width;
-
-            // On mobile (cardWidth >= containerWidth), 1 card is visible per slide
-            const visible = Math.max(1, Math.round(containerWidth / (cardWidth + (containerWidth > cardWidth ? gap : 0))));
+            const visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
             const maxIdx = Math.max(0, totalCards - visible);
             return { cardWidth, gap, maxIdx };
         }
@@ -101,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Mobile Touch Swiping Listeners
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -114,13 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const swipeDistance = touchStartX - touchEndX;
             const { maxIdx } = getVisibleMetrics();
 
-            // Swipe Left -> Next Slide
             if (swipeDistance > 45 && currentIndex < maxIdx) {
                 currentIndex++;
                 updateSlider();
-            }
-            // Swipe Right -> Previous Slide
-            else if (swipeDistance < -45 && currentIndex > 0) {
+            } else if (swipeDistance < -45 && currentIndex > 0) {
                 currentIndex--;
                 updateSlider();
             }
@@ -130,46 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(updateSlider, 200);
     });
 
-    // --- 3. Custom Trailing Cursor Engine ---
-    if (window.matchMedia("(pointer: fine)").matches) {
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            if (cursorDot) {
-                cursorDot.style.left = `${mouseX}px`;
-                cursorDot.style.top = `${mouseY}px`;
-            }
-        });
-
-        function animateCursor() {
-            outlineX += (mouseX - outlineX) * 0.15;
-            outlineY += (mouseY - outlineY) * 0.15;
-            if (cursorOutline) {
-                cursorOutline.style.left = `${outlineX}px`;
-                cursorOutline.style.top = `${outlineY}px`;
-            }
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        document.body.addEventListener('mouseenter', (e) => {
-            if (e.target.classList && e.target.classList.contains('hover-target')) {
-                cursorOutline?.classList.add('expand');
-            }
-        }, true);
-
-        document.body.addEventListener('mouseleave', (e) => {
-            if (e.target.classList && e.target.classList.contains('hover-target')) {
-                cursorOutline?.classList.remove('expand');
-            }
-        }, true);
-    }
-
-    // --- 4. Scroll Progress Bar ---
+    // --- 6. Scroll Progress Bar ---
     const progressBar = document.querySelector('.scroll-progress');
     window.addEventListener('scroll', () => {
         if (progressBar) {
@@ -178,35 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 5. Magnetic Component Interactions ---
-    document.querySelectorAll('.magnetic-btn').forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            btn.style.transform = `translate(${(e.clientX - (rect.left + rect.width / 2)) * 0.2}px, ${(e.clientY - (rect.top + rect.height / 2)) * 0.2}px)`;
-        });
-        btn.addEventListener('mouseleave', () => btn.style.transform = `translate(0px, 0px)`);
-    });
-
-    // --- 6. Scroll Intersection Reveal ---
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // --- 7. Embedded Video Controllers ---
-    document.querySelectorAll('.hover-video-card').forEach(card => {
-        const iframe = document.getElementById(card.getAttribute('data-video-id'));
-        const sendCmd = (cmd) => iframe?.contentWindow.postMessage(JSON.stringify({ event: 'command', func: cmd, args: [] }), '*');
-        card.addEventListener('mouseenter', () => sendCmd('playVideo'));
-        card.addEventListener('mouseleave', () => sendCmd('pauseVideo'));
-    });
-
-    // --- 8. Theme Switcher ---
+    // --- 7. Theme Switcher (Dark / Light) ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     if (themeToggleBtn) {
         const themeIcon = themeToggleBtn.querySelector('.theme-icon');
@@ -225,40 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 9. Responsive Mobile Navigation Drawer ---
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navLinks.classList.toggle('nav-active');
-            const menuIcon = menuToggle.querySelector('.menu-icon');
-            if (menuIcon) {
-                menuIcon.textContent = navLinks.classList.contains('nav-active') ? '✕' : '☰';
-            }
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('nav-active');
-                const menuIcon = menuToggle.querySelector('.menu-icon');
-                if (menuIcon) menuIcon.textContent = '☰';
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                if (navLinks.classList.contains('nav-active')) {
-                    navLinks.classList.remove('nav-active');
-                    const menuIcon = menuToggle.querySelector('.menu-icon');
-                    if (menuIcon) menuIcon.textContent = '☰';
-                }
-            }
-        });
-    }
-
-    // --- 10. Contact Form Transmission & Modal ---
+    // --- 8. Contact Form Modal ---
     const contactForm = document.getElementById('contact-form');
     const modal = document.getElementById('email-modal');
     const closeBtn = document.getElementById('close-modal');
@@ -278,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (modal) modal.style.display = 'flex';
                     contactForm.reset();
                 } else {
-                    alert("Submission error. Please send an email directly to tomaquinmark123@gmail.com.");
+                    alert("Submission error. Please email directly to tomaquinmark123@gmail.com.");
                 }
             } catch (err) {
                 alert("Network error. Please try again.");
@@ -290,11 +209,3 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.addEventListener('click', () => modal.style.display = 'none');
     }
 });
-
-function showToast() {
-    const toast = document.getElementById('toast-notification');
-    if (toast) {
-        toast.classList.add('active');
-        setTimeout(() => toast.classList.remove('active'), 2800);
-    }
-}
