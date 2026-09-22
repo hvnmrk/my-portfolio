@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. Dynamic Theme Tokens (Midnight Glass & High-Contrast)
+   1. Theme Variables & Global Styles
    ========================================================================== */
 :root {
     --bg-main: #060911;
@@ -63,6 +63,7 @@
     --btn-primary-shadow: rgba(15, 23, 42, 0.25);
     --btn-secondary-bg: rgba(15, 23, 42, 0.05);
 }
+
 
 /* ==========================================================================
    2. Reset & Scroll Animations
@@ -204,6 +205,7 @@ body {
     margin-bottom: 28px;
 }
 
+
 /* ==========================================================================
    3. Header Navigation & Frosted Controls
    ========================================================================== */
@@ -308,6 +310,7 @@ header {
 .menu-toggle {
     display: none;
 }
+
 
 /* ==========================================================================
    4. Hero Section & Snapshot
@@ -586,8 +589,9 @@ header {
     letter-spacing: 1px;
 }
 
+
 /* ==========================================================================
-   5. macOS Code Windows
+   5. macOS Code Windows & Visual Column
    ========================================================================== */
 .hero-visual-col {
     position: relative;
@@ -595,8 +599,10 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    max-width: 320px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 0 10px;
 }
 
 .editor-window {
@@ -748,8 +754,9 @@ header {
 
 .snippet-window {
     width: 100%;
-    max-width: 320px;
-    padding: 14px 18px;
+    max-width: 290px;
+    padding: 14px 16px;
+    overflow: hidden;
 }
 
 .snippet-window:hover {
@@ -772,9 +779,12 @@ header {
 
 .code-block {
     font-family: var(--font-mono);
-    font-size: 0.76rem;
-    line-height: 1.6;
+    font-size: 0.72rem;
+    line-height: 1.55;
     color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
 }
 
 .code-line {
@@ -824,8 +834,9 @@ header {
     }
 }
 
+
 /* ==========================================================================
-   6. Re-Themed Interactive Digital Card (Portfolio Glassmorphism Match)
+   6. Interactive Digital Card
    ========================================================================== */
 .about-grid {
     display: grid;
@@ -914,7 +925,6 @@ header {
     transform: rotateY(180deg);
 }
 
-/* Re-skinned Card Face to match Portfolio Glassmorphism */
 .card-face {
     position: absolute;
     inset: 0;
@@ -1113,7 +1123,15 @@ header {
 .mock-barcode {
     width: 100%;
     height: 22px;
-    background: repeating-linear-gradient(90deg, #fff 0, #fff 2px, transparent 2px, transparent 4px, #fff 4px, #fff 7px, transparent 7px, transparent 9px);
+    background: repeating-linear-gradient(90deg,
+            #fff 0,
+            #fff 2px,
+            transparent 2px,
+            transparent 4px,
+            #fff 4px,
+            #fff 7px,
+            transparent 7px,
+            transparent 9px);
     opacity: 0.75;
 }
 
@@ -1176,6 +1194,7 @@ header {
     margin-top: 14px;
     text-align: center;
 }
+
 
 /* ==========================================================================
    7. Projects Carousel & Glass Cards
@@ -1339,12 +1358,13 @@ header {
     line-height: 1.5;
 }
 
+
 /* ==========================================================================
    8. Skills, Experience & Badges
    ========================================================================== */
 .skills-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2 fr 1fr;
     gap: 24px;
 }
 
@@ -1410,6 +1430,27 @@ header {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+/* ==========================================================================
+   3-Column Skills Grid
+   ========================================================================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .timeline-card {
@@ -1500,6 +1541,7 @@ header {
     color: var(--accent-blue);
     transform: translateX(4px);
 }
+
 
 /* ==========================================================================
    9. Contact Form & Footer
@@ -1651,10 +1693,13 @@ footer {
     margin-bottom: 16px;
 }
 
+
 /* ==========================================================================
-   10. Responsive Breakpoints
+   10. Responsive Breakpoints & Mobile Hamburger Drawer
    ========================================================================== */
+
 @media (max-width: 992px) {
+
     .hero-grid {
         grid-template-columns: 1fr !important;
         gap: 40px;
@@ -1682,21 +1727,111 @@ footer {
         width: calc((92vw - 24px) / 2) !important;
         max-width: calc((92vw - 24px) / 2) !important;
     }
+
+    .card-timeline-header {
+        gap: 16px;
+    }
 }
 
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
 @media (max-width: 768px) {
+
     .section-padding {
         padding: 65px 0;
     }
 
     .nav-center {
-        display: none;
+        display: block;
     }
 
     .menu-toggle {
-        display: flex;
+        display: flex !important;
+        position: relative;
+        z-index: 10002;
+        flex-shrink: 0;
     }
 
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        width: min(300px, 85vw);
+        height: 100vh;
+        height: 100dvh;
+
+        margin: 0;
+        padding: 100px 24px 32px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        gap: 10px;
+
+        background: var(--bg-main);
+
+        border-left: 1px solid var(--border-glass);
+
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+
+        box-shadow: -20px 0 50px rgba(0, 0, 0, 0.55);
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        transform: translateX(100%);
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+
+        transition:
+            transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            opacity 0.25s ease,
+            visibility 0.35s ease;
+
+        z-index: 10001;
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links .nav-link {
+        display: block;
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 1rem;
+        text-align: left;
+        border-radius: 12px;
+        color: var(--text-primary);
+    }
+
+    .nav-links .nav-link:hover,
+    .nav-links .nav-link.active {
+        color: var(--text-primary);
+        background: var(--pill-bg);
+        border-color: var(--border-glass);
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* Hero */
     .hero-section {
         padding-top: 100px;
     }
@@ -1708,14 +1843,36 @@ footer {
 
     .hero-btn-row {
         flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-btn-row .btn {
+        width: 100%;
     }
 
     .works-grid.adaptive-carousel .project-card {
         flex: 0 0 92vw !important;
         width: 92vw !important;
         max-width: 92vw !important;
+        min-width: 0 !important;
     }
 
+    .card-preview {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .card-preview img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Certificates */
     .cert-row {
         grid-template-columns: 1fr;
         gap: 6px;
@@ -1725,7 +1882,154 @@ footer {
         text-align: left;
     }
 
+    /* ID card */
     .digital-id-perspective {
         max-width: 100%;
+    }
+
+    /* Experience */
+    .card-timeline-header {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    /* Footer */
+    .footer-content {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE(370?)
+   ========================================================================== */
+
+@media (max-width: 560px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .nav-links {
+        width: min(310px, 88vw);
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .hero-headline {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+    }
+
+    .hero-bio {
+        font-size: 0.94rem;
+    }
+
+    .dev-snapshot-card {
+        padding: 18px;
+    }
+
+    .snapshot-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .hero-metrics-row {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .contact-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .clean-form,
+    .contact-card-box {
+        padding: 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* ==========================================================================
+   EXTRA SMALL MOBILE (320px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+    .digital-id-perspective {
+        max-width: 100%;
+        aspect-ratio: 1.55 / 1;
+    }
+
+    .card-face {
+        padding: 12px 14px !important;
+    }
+
+    .card-avatar-box {
+        width: 64px !important;
+        height: 74px !important;
+    }
+
+    .card-holder-name {
+        font-size: 0.98rem !important;
+    }
+
+    .card-holder-role {
+        font-size: 0.65rem !important;
+        margin-bottom: 4px !important;
+    }
+
+    .field-micro {
+        font-size: 0.5rem !important;
+        letter-spacing: 0.8px !important;
+    }
+
+    .card-code {
+        font-size: 0.7rem !important;
+    }
+
+    .window-header {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 8px 10px;
+    }
+
+    .window-tabs {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+
+    .window-tabs .tab {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        white-space: nowrap;
+    }
+
+    .hero-section {
+        padding-top: 90px;
+    }
+
+    .section-padding {
+        padding: 55px 0;
+    }
+
+    .hero-metrics-row {
+        gap: 14px;
+    }
+
+    .metric-number {
+        font-size: 1.4rem;
+    }
+
+    .metric-label {
+        font-size: 0.6rem;
     }
 }
