@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark Tomaquin</title>
-    <link rel="icon" type="image/png" href="af.png">
+    <link rel="icon" type="image/png" href="assets/af.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -49,7 +49,7 @@
     </header>
 
     <main>
-        <!-- ==================== HERO SECTION ==================== -->
+        <!--  HERO SECTION  -->
         <section id="home" class="hero-section">
             <div class="container">
                 <div class="hero-grid">
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
                             <div class="avatar-frame">
-                                <img src="me.png" alt="Mark Tomaquin" class="avatar-photo">
+                                <img src="/assets/me.png" alt="Mark Tomaquin" class="avatar-photo">
                                 <div class="avatar-glass-tint"></div>
                                 <div class="avatar-status-tag">
                                     <span class="status-pulse"></span>
@@ -163,20 +163,22 @@
                                 <span class="mono-prefix">// PIPELINE SNIPPET</span>
                                 <span class="readonly-badge">v2.6 • main*</span>
                             </div>
-                            <pre class="code-block"><code><span class="code-line"><span class="line-num">01</span><span class="token-keyword">const</span> candidate = <span class="token-func">initializeDeveloper</span>({</span>
+
+                            <pre class="code-block"><code>
+<span class="code-line"><span class="line-num">01</span><span class="token-keyword">const</span> candidate = <span class="token-func">initializeDeveloper</span>({</span>
 <span class="code-line"><span class="line-num">02</span>  role: <span class="token-string">"Aspiring Software Engineer"</span>,</span>
-<span class="code-line"><span class="line-num">03</span>  stack: [<span class="token-string">"Flutter"</span>, <span class="token-string">"PHP"</span>, <span class="token-string">"REST"</span>],</span>
-<span class="code-line"><span class="line-num">04</span>  architecture: <span class="token-string">"Clean & Scalable"</span></span>
-<span class="code-line"><span class="line-num">05</span>});</span></code></pre>
+<span class="code-line"><span class="line-num">03</span>  stack: [<span class="token-string">"HTML"</span>, <span class="token-string">"CSS"</span>, <span class="token-string">"JavaScript"</span>, <span class="token-string">"MySQL"</span>],</span>
+<span class="code-line"><span class="line-num">04</span>  api: <span class="token-string">"REST"</span>,</span>
+<span class="code-line"><span class="line-num">05</span>  architecture: <span class="token-string">"Clean & Scalable"</span></span>
+<span class="code-line"><span class="line-num">06</span>});</span>
+    </code></pre>
                         </div>
                     </div>
-
                 </div>
-            </div>
-            <div class="ambient-glow"></div>
+                <div class="ambient-glow"></div>
         </section>
 
-        <!-- ==================== ABOUT & DIGITAL ID ==================== -->
+        <!--  ABOUT  -->
         <section id="about" class="section-padding">
             <div class="container">
                 <div class="section-title-wrap reveal-up">
@@ -210,7 +212,7 @@
 
                     <div class="id-showcase reveal-right delay-2">
                         <div class="id-meta-bar">
-                            <span class="mono-prefix">// INTERACTIVE DIGITAL ID</span>
+
 
                         </div>
                         <div class="digital-id-perspective">
@@ -226,7 +228,7 @@
                                     </div>
                                     <div class="card-front-body">
                                         <div class="card-avatar-box">
-                                            <img src="me.png" alt="Avatar" class="card-avatar-img">
+                                            <img src="assets/me.png" alt="Avatar" class="card-avatar-img">
                                             <div class="verified-watermark">MT</div>
                                         </div>
                                         <div class="card-identity-fields">
@@ -289,7 +291,7 @@
             </div>
         </section>
 
-        <!-- ==================== PROJECTS SECTION ==================== -->
+        <!--  PROJECTS SECTION  -->
         <section id="projects" class="section-padding">
             <div class="container">
                 <div class="category-header-wrap reveal-up">
@@ -308,7 +310,7 @@
                         <!-- Over-Time -->
                         <div class="project-card spotlight-card">
                             <div class="card-preview">
-                                <img src="Over-Time.png" alt="Over-Time System">
+                                <img src="assets/Over-Time.png" alt="Over-Time System">
                                 <a href="https://over-time-tracker.vercel.app/" target="_blank" rel="noopener"
                                     class="preview-overlay">
                                     View Live App &rarr;
@@ -319,21 +321,21 @@
                                     <span class="card-tag">HTML</span>
                                     <span class="card-tag">CSS</span>
                                     <span class="card-tag">React</span>
-                                    <span class="card-tag">Supabase</span>
+                                    <span class="card-tag">PostgreSQL</span>
                                 </div>
                                 <h3 class="card-title">Over-Time</h3>
                                 <p class="card-desc">
                                     is a Progressive Web App (PWA) designed to help OJT students track attendance, daily
                                     accomplishments, and rendered internship hours. It was originally created as a
                                     personal tool for my current OJT and is being continuously improved for wider
-                                    deployment. Built using HTML, CSS, JavaScript, Supabase, and PWA technologies.
+                                    deployment.
                                 </p>
                             </div>
                         </div>
                         <!-- Queue-Pal -->
                         <div class="project-card spotlight-card">
                             <div class="card-preview">
-                                <img src="Queue-pal.jpg" alt="Queue-Pal System">
+                                <img src="assets/Queue-pal.jpg" alt="Queue-Pal System">
                                 <a href="https://github.com/hvnmrk/Queue-Pal" target="_blank" rel="noopener"
                                     class="preview-overlay">
                                     View Source Code &rarr;
@@ -342,8 +344,8 @@
                             <div class="card-content">
                                 <div class="card-tag-row">
                                     <span class="card-tag">Dart</span>
-                                    <span class="card-tag">Supabase</span>
-                                    <span class="card-tag">Mobile System</span>
+                                    <span class="card-tag">PostgreSQL</span>
+
                                 </div>
                                 <h3 class="card-title">Queue-Pal</h3>
                                 <p class="card-desc">
@@ -356,7 +358,7 @@
                         <!-- Clean Sweep -->
                         <div class="project-card spotlight-card">
                             <div class="card-preview">
-                                <img src="cleansweep.jpg" alt="Clean Sweep App">
+                                <img src="assets/cleansweep.jpg" alt="Clean Sweep App">
                                 <a href="https://clean-sweep-landing-page.vercel.app/" target="_blank" rel="noopener"
                                     class="preview-overlay">
                                     Landing Page &rarr;
@@ -366,7 +368,6 @@
                                 <div class="card-tag-row">
                                     <span class="card-tag">Mobile App</span>
 
-                                    <span class="card-tag">Vercel</span>
                                 </div>
                                 <h3 class="card-title">Clean Sweep (Capstone)</h3>
                                 <p class="card-desc">
@@ -379,7 +380,7 @@
                         <!-- bigj.store -->
                         <div class="project-card spotlight-card">
                             <div class="card-preview">
-                                <img src="bigj.png" alt="bigj.store Platform">
+                                <img src="assets/bigj.png" alt="bigj.store Platform">
                                 <a href="https://www.figma.com/proto/u3kpMfiMowgjjhKNxmIbAZ/FinalBigJ?node-id=0-1&t=xKHRf4FBxbcVnSpt-1"
                                     target="_blank" rel="noopener" class="preview-overlay">
                                     View Platform Demo &rarr;
@@ -390,6 +391,7 @@
                                     <span class="card-tag">HTML</span>
                                     <span class="card-tag">MySQL</span>
                                     <span class="card-tag">JavaScript</span>
+                                    <span class="card-tag">PHP</span>
                                 </div>
                                 <h3 class="card-title">bigj.store</h3>
                                 <p class="card-desc">
@@ -403,7 +405,7 @@
                         <!-- ARTA Survey -->
                         <div class="project-card spotlight-card">
                             <div class="card-preview">
-                                <img src="arta.png" alt="ARTA System">
+                                <img src="assets/arta.png" alt="ARTA System">
                                 <a href="https://github.com/hvnmrk" target="_blank" rel="noopener"
                                     class="preview-overlay">
                                     View Repository &rarr;
@@ -428,7 +430,7 @@
                         <!-- SalesPredictor ML -->
                         <div class="project-card spotlight-card">
                             <div class="card-preview">
-                                <img src="mml.png" alt="SalesPredictor ML">
+                                <img src="assets/mml.png" alt="SalesPredictor ML">
                                 <a href="https://github.com/stephx6/Demand-Rank-Website.git" target="_blank"
                                     rel="noopener" class="preview-overlay">
                                     View Source Code &rarr;
@@ -453,7 +455,7 @@
             </div>
         </section>
 
-        <!-- ==================== SKILLS & STACKS ==================== -->
+        <!--  SKILLS & STACKS  -->
         <section id="skills" class="section-padding">
             <div class="container">
                 <div class="section-title-wrap reveal-up">
@@ -474,6 +476,7 @@
                             <span class="tech-pill"><i class="devicon-java-plain colored"></i> Java</span>
                             <span class="tech-pill"><i class="devicon-html5-plain colored"></i> HTML5</span>
                             <span class="tech-pill"><i class="devicon-css3-plain colored"></i> CSS3</span>
+                            <span class="tech-pill"><i class="devicon-flutter-plain colored"></i> Flutter</span>
                         </div>
                     </div>
 
@@ -481,7 +484,7 @@
                         <span class="category-label">// TOOLS & DEVOPS</span>
                         <div class="pill-cloud">
                             <span class="tech-pill"><i class="devicon-github-original"></i> GitHub</span>
-                            <span class="tech-pill"><i class="devicon-flutter-plain colored"></i> Flutter</span>
+
                             <span class="tech-pill"><i class="devicon-vscode-plain colored"></i> VS Code</span>
                             <span class="tech-pill"><i class="devicon-visualstudio-plain colored"></i> Visual
                                 Studio</span>
@@ -493,12 +496,17 @@
                     <div class="skill-category-card spotlight-card">
                         <span class="category-label">// BACKEND & DATABASES</span>
                         <div class="pill-cloud">
-                            <span class="tech-pill"><i class="devicon-postman-plain colored"></i> REST
-                                APIs</span> <span class="tech-pill"><i class="devicon-github-original"></i>
+                            <span class="tech-pill">
+                                <i class="devicon-postman-plain colored"></i>
+                                REST APIs
+                            </span> <span class="tech-pill"><i class="devicon-github-original"></i>
                                 GitHub</span>
 
                             <span class="tech-pill"><i class="devicon-mysql-original colored"></i> MySQL</span>
-                            <span class="tech-pill"><i class="devicon-supabase-plain colored"></i> Supabase</span>
+                            <span class="tech-pill">
+                                <i class="devicon-postgresql-plain colored"></i>
+                                PostgreSQL
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -508,7 +516,7 @@
 
         </section>
 
-        <!-- ==================== EXPERIENCE ==================== -->
+        <!--  EXPERIENCE  -->
         <section id="experience" class="section-padding">
             <div class="container">
                 <div class="section-title-wrap reveal-up">
@@ -521,7 +529,10 @@
                         <div class="card-timeline-header">
                             <div>
                                 <h3 class="timeline-role">IT Infrastructure & Support</h3>
-                                <p class="timeline-org">Our Lady of Fatima University (Valenzuela)</p>
+
+                                <p class="timeline-org">Our Lady of Fatima University Valenzuela (Intership)</p>
+
+
                             </div>
                             <span class="timeline-year">2026 — PRESENT</span>
                         </div>
@@ -565,7 +576,7 @@
             </div>
         </section>
 
-        <!-- ==================== CERTIFICATIONS ==================== -->
+        <!--  CERTIFICATIONS  -->
         <section id="certificates" class="section-padding">
             <div class="container">
                 <div class="section-title-wrap reveal-up">
@@ -582,7 +593,7 @@
 
                             </p>
                         </div>
-                        <a href="BreakLabsFrontEnd.png" target="_blank" rel="noopener" class="cert-link">
+                        <a href="assets/BreakLabsFrontEnd.png" target="_blank" rel="noopener" class="cert-link">
                             View Certificate &rarr;
                         </a>
                     </div>
@@ -629,7 +640,7 @@
             </div>
         </section>
 
-        <!-- ==================== CONTACT ==================== -->
+        <!--  CONTACT  -->
         <section id="contact" class="section-padding">
             <div class="container">
                 <div class="contact-grid">
@@ -643,11 +654,7 @@
                         </p>
 
                         <div class="contact-card-box spotlight-card">
-                            <div class="contact-row">
-                                <span class="mono-prefix">Email:</span>
-                                <a href="mailto:tomaquinmark123@gmail.com"
-                                    class="contact-val">tomaquinmark123@gmail.com</a>
-                            </div>
+
                             <div class="contact-row">
                                 <span class="mono-prefix">GitHub:</span>
                                 <a href="https://github.com/hvnmrk" target="_blank" rel="noopener"
