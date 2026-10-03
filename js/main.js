@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Soft Un-Blur Scroll Reveal Observer ---
-    const revealTargets = document.querySelectorAll('.reveal, .reveal-up, .reveal-left, .reveal-right');
+    const revealItems = document.querySelectorAll('.reveal, .reveal-up, .reveal-left, .reveal-right');
 
-    const revealObserver = new IntersectionObserver((entries) => {
+    const revealWatch = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
+                revealWatch.unobserve(entry.target);
             }
         });
     }, {
@@ -15,13 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -40px 0px'
     });
 
-    revealTargets.forEach(el => revealObserver.observe(el));
+    revealItems.forEach(el => revealWatch.observe(el));
 
+    const glowCards = document.querySelectorAll('.spotlight-card');
 
-    // --- 2. Interactive Spotlight Mouse Glow ---
-    const spotlightCards = document.querySelectorAll('.spotlight-card');
-
-    spotlightCards.forEach(card => {
+    glowCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -32,12 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-    // --- 3. 3D Tilt Dynamics for macOS Editor Windows ---
-    const tiltTargets = document.querySelectorAll('.tilt-target');
+    const tiltCards = document.querySelectorAll('.tilt-target');
 
     if (window.matchMedia("(pointer: fine)").matches) {
-        tiltTargets.forEach(target => {
+        tiltCards.forEach(target => {
 
             target.addEventListener('mousemove', (e) => {
                 const rect = target.getBoundingClientRect();
@@ -60,35 +55,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ================================
+    // DIGITAL / NFC CARD FLIP
+    // ================================
 
-    // --- 4. 3D Flippable Digital ID Card ---
-    const interactiveCard = document.getElementById('interactiveCard');
+    const interactiveCard =
+        document.getElementById('interactiveCard');
 
     if (interactiveCard) {
 
         interactiveCard.addEventListener('click', () => {
+
             interactiveCard.classList.toggle('is-flipped');
+
         });
+
 
         interactiveCard.addEventListener('keydown', (e) => {
 
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (
+                e.key === 'Enter' ||
+                e.key === ' '
+            ) {
+
                 e.preventDefault();
-                interactiveCard.classList.toggle('is-flipped');
+
+                interactiveCard.classList.toggle(
+                    'is-flipped'
+                );
+
             }
 
         });
 
     }
+    const projectTracks = document.querySelectorAll('.adaptive-carousel');
 
-
-    // --- 5. Projects Carousel Slider & Touch Gestures ---
-    const carousels = document.querySelectorAll('.adaptive-carousel');
-
-    carousels.forEach(track => {
+    projectTracks.forEach(track => {
 
         const cards = Array.from(track.children);
-        const totalCards = cards.length;
+        const cardCount = cards.length;
 
         const container = track.closest('.carousel-container');
 
@@ -103,10 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!prevBtn || !nextBtn) return;
 
-        let currentIndex = 0;
+        let slideIndex = 0;
 
-
-        function getVisibleMetrics() {
+        function getTrackInfo() {
 
             const firstCard = cards[0];
 
@@ -136,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const maxIdx = Math.max(
                 0,
-                totalCards - visible
+                cardCount - visible
             );
 
             return {
@@ -146,112 +151,103 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
 
-
-        function updateSlider() {
+        function moveTrack() {
 
             const {
                 cardWidth,
                 gap,
                 maxIdx
-            } = getVisibleMetrics();
+            } = getTrackInfo();
 
-            if (currentIndex < 0) {
-                currentIndex = 0;
+            if (slideIndex < 0) {
+                slideIndex = 0;
             }
 
-            if (currentIndex > maxIdx) {
-                currentIndex = maxIdx;
+            if (slideIndex > maxIdx) {
+                slideIndex = maxIdx;
             }
 
             const translateX =
-                currentIndex * (cardWidth + gap);
+                slideIndex * (cardWidth + gap);
 
             track.style.transform =
                 `translateX(-${translateX}px)`;
 
-
             prevBtn.style.opacity =
-                currentIndex === 0 ? '0.3' : '1';
+                slideIndex === 0 ? '0.3' : '1';
 
             prevBtn.style.pointerEvents =
-                currentIndex === 0 ? 'none' : 'auto';
-
+                slideIndex === 0 ? 'none' : 'auto';
 
             nextBtn.style.opacity =
-                currentIndex >= maxIdx ? '0.3' : '1';
+                slideIndex >= maxIdx ? '0.3' : '1';
 
             nextBtn.style.pointerEvents =
-                currentIndex >= maxIdx ? 'none' : 'auto';
+                slideIndex >= maxIdx ? 'none' : 'auto';
         }
-
 
         nextBtn.addEventListener('click', (e) => {
 
             e.preventDefault();
 
-            const { maxIdx } = getVisibleMetrics();
+            const { maxIdx } = getTrackInfo();
 
-            if (currentIndex < maxIdx) {
-                currentIndex++;
-                updateSlider();
+            if (slideIndex < maxIdx) {
+                slideIndex++;
+                moveTrack();
             }
 
         });
-
 
         prevBtn.addEventListener('click', (e) => {
 
             e.preventDefault();
 
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
+            if (slideIndex > 0) {
+                slideIndex--;
+                moveTrack();
             }
 
         });
 
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-
+        let touchStart = 0;
+        let touchEnd = 0;
 
         track.addEventListener('touchstart', (e) => {
 
-            touchStartX =
+            touchStart =
                 e.changedTouches[0].screenX;
 
         }, {
             passive: true
         });
 
-
         track.addEventListener('touchend', (e) => {
 
-            touchEndX =
+            touchEnd =
                 e.changedTouches[0].screenX;
 
-            const swipeDistance =
-                touchStartX - touchEndX;
+            const swipeX =
+                touchStart - touchEnd;
 
             const { maxIdx } =
-                getVisibleMetrics();
-
+                getTrackInfo();
 
             if (
-                swipeDistance > 45 &&
-                currentIndex < maxIdx
+                swipeX > 45 &&
+                slideIndex < maxIdx
             ) {
 
-                currentIndex++;
-                updateSlider();
+                slideIndex++;
+                moveTrack();
 
             } else if (
-                swipeDistance < -45 &&
-                currentIndex > 0
+                swipeX < -45 &&
+                slideIndex > 0
             ) {
 
-                currentIndex--;
-                updateSlider();
+                slideIndex--;
+                moveTrack();
 
             }
 
@@ -259,27 +255,24 @@ document.addEventListener('DOMContentLoaded', () => {
             passive: true
         });
 
-
         window.addEventListener(
             'resize',
-            updateSlider
+            moveTrack
         );
 
         setTimeout(
-            updateSlider,
+            moveTrack,
             200
         );
 
     });
 
-
-    // --- 6. Scroll Progress Bar ---
-    const progressBar =
+    const pageProgress =
         document.querySelector('.scroll-progress');
 
     window.addEventListener('scroll', () => {
 
-        if (progressBar) {
+        if (pageProgress) {
 
             const maxScroll =
                 document.body.scrollHeight -
@@ -290,59 +283,56 @@ document.addEventListener('DOMContentLoaded', () => {
                     ? (window.scrollY / maxScroll) * 100
                     : 0;
 
-            progressBar.style.width =
+            pageProgress.style.width =
                 scrollPercent + '%';
         }
 
     });
 
-
-    // --- 7. Theme Switcher (Dark / Light) ---
-    const themeToggleBtn =
+    const themeButton =
         document.getElementById('theme-toggle');
 
-    if (themeToggleBtn) {
+    if (themeButton) {
 
         const themeIcon =
-            themeToggleBtn.querySelector('.theme-icon');
+            themeButton.querySelector('.theme-icon');
 
-        const currentTheme =
+        const savedTheme =
             localStorage.getItem('theme');
 
-        if (currentTheme) {
+        if (savedTheme) {
 
             document.documentElement.setAttribute(
                 'data-theme',
-                currentTheme
+                savedTheme
             );
 
             if (themeIcon) {
                 themeIcon.textContent =
-                    currentTheme === 'light'
+                    savedTheme === 'light'
                         ? '☾'
                         : '☼';
             }
         }
 
-
-        themeToggleBtn.addEventListener('click', () => {
+        themeButton.addEventListener('click', () => {
 
             const isLight =
                 document.documentElement.getAttribute(
                     'data-theme'
                 ) === 'light';
 
-            const nextTheme =
+            const newTheme =
                 isLight ? 'dark' : 'light';
 
             document.documentElement.setAttribute(
                 'data-theme',
-                nextTheme
+                newTheme
             );
 
             localStorage.setItem(
                 'theme',
-                nextTheme
+                newTheme
             );
 
             if (themeIcon) {
@@ -354,26 +344,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-
-    // --- 8. Active Navigation Link on Scroll ---
-    const navItems =
+    const navLinksList =
         document.querySelectorAll('.nav-link');
 
     const sections =
         document.querySelectorAll('main section[id]');
 
-
     function updateActiveNav() {
 
-        if (!navItems.length || !sections.length) {
+        if (!navLinksList.length || !sections.length) {
             return;
         }
 
-        let currentSection = 'home';
+        let activeSection = 'home';
 
-        const scrollPosition =
+        const scrollPoint =
             window.scrollY + 180;
-
 
         sections.forEach(section => {
 
@@ -384,34 +370,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 sectionTop +
                 section.offsetHeight;
 
-
             if (
-                scrollPosition >= sectionTop &&
-                scrollPosition < sectionBottom
+                scrollPoint >= sectionTop &&
+                scrollPoint < sectionBottom
             ) {
 
-                currentSection =
+                activeSection =
                     section.id;
 
             }
 
         });
 
-
-        navItems.forEach(link => {
+        navLinksList.forEach(link => {
 
             const linkTarget =
                 link.getAttribute('href');
 
             link.classList.toggle(
                 'active',
-                linkTarget === `#${currentSection}`
+                linkTarget === `#${activeSection}`
             );
 
         });
 
     }
-
 
     window.addEventListener(
         'scroll',
@@ -425,25 +408,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateActiveNav();
 
-
-    // --- 9. Responsive Mobile Navigation Drawer ---
-    const menuToggle =
+    const menuButton =
         document.querySelector('.menu-toggle');
 
-    const navLinks =
+    const menuLinks =
         document.querySelector('.nav-links');
 
+    if (menuButton && menuLinks) {
 
-    if (menuToggle && navLinks) {
+        const menuMark =
+            menuButton.querySelector('.menu-icon') ||
+            menuButton;
 
-        const menuIcon =
-            menuToggle.querySelector('.menu-icon') ||
-            menuToggle;
+        function setMenu(open) {
 
-
-        function setMenuState(open) {
-
-            navLinks.classList.toggle(
+            menuLinks.classList.toggle(
                 'nav-active',
                 open
             );
@@ -453,42 +432,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 open
             );
 
-            menuIcon.textContent =
+            menuMark.textContent =
                 open ? '✕' : '☰';
 
-            menuToggle.setAttribute(
+            menuButton.setAttribute(
                 'aria-expanded',
                 open ? 'true' : 'false'
             );
 
         }
 
+        setMenu(false);
 
-        setMenuState(false);
-
-
-        menuToggle.addEventListener('click', (e) => {
+        menuButton.addEventListener('click', (e) => {
 
             e.preventDefault();
             e.stopPropagation();
 
             const isOpen =
-                navLinks.classList.contains(
+                menuLinks.classList.contains(
                     'nav-active'
                 );
 
-            setMenuState(!isOpen);
+            setMenu(!isOpen);
 
         });
 
-
-        navLinks.querySelectorAll('a').forEach(link => {
+        menuLinks.querySelectorAll('a').forEach(link => {
 
             link.addEventListener('click', () => {
 
-                setMenuState(false);
+                setMenu(false);
 
-                navItems.forEach(item => {
+                navLinksList.forEach(item => {
                     item.classList.remove('active');
                 });
 
@@ -498,148 +474,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
         });
 
-
         document.addEventListener('click', (e) => {
 
             if (
-                navLinks.classList.contains('nav-active') &&
-                !navLinks.contains(e.target) &&
-                !menuToggle.contains(e.target)
+                menuLinks.classList.contains('nav-active') &&
+                !menuLinks.contains(e.target) &&
+                !menuButton.contains(e.target)
             ) {
 
-                setMenuState(false);
+                setMenu(false);
 
             }
 
         });
-
 
         document.addEventListener('keydown', (e) => {
 
             if (e.key === 'Escape') {
-                setMenuState(false);
+                setMenu(false);
             }
 
         });
 
-
-        const mobileBreakpoint =
+        const mobileView =
             window.matchMedia('(max-width: 768px)');
 
-
-        const handleBreakpointChange = (e) => {
+        const handleMobileChange = (e) => {
 
             if (!e.matches) {
-                setMenuState(false);
+                setMenu(false);
             }
 
         };
 
+        if (mobileView.addEventListener) {
 
-        if (mobileBreakpoint.addEventListener) {
-
-            mobileBreakpoint.addEventListener(
+            mobileView.addEventListener(
                 'change',
-                handleBreakpointChange
+                handleMobileChange
             );
 
         } else {
 
-            mobileBreakpoint.addListener(
-                handleBreakpointChange
+            mobileView.addListener(
+                handleMobileChange
             );
 
         }
 
-
         window.addEventListener('resize', () => {
 
             if (window.innerWidth > 768) {
-                setMenuState(false);
+                setMenu(false);
             }
 
         });
-
-    }
-
-
-    // --- 10. Contact Form Modal ---
-    const contactForm =
-        document.getElementById('contact-form');
-
-    const modal =
-        document.getElementById('email-modal');
-
-    const closeBtn =
-        document.getElementById('close-modal');
-
-
-    if (contactForm) {
-
-        contactForm.addEventListener(
-            'submit',
-            async (e) => {
-
-                e.preventDefault();
-
-                const formData =
-                    new FormData(contactForm);
-
-
-                try {
-
-                    const response =
-                        await fetch(
-                            "https://formspree.io/f/xlgvzele",
-                            {
-                                method: "POST",
-                                body: formData,
-                                headers: {
-                                    'Accept':
-                                        'application/json'
-                                }
-                            }
-                        );
-
-
-                    if (response.ok) {
-
-                        if (modal) {
-                            modal.style.display = 'flex';
-                        }
-
-                        contactForm.reset();
-
-                    } else {
-
-                        alert(
-                            "Submission error. Please email directly to tomaquinmark123@gmail.com."
-                        );
-
-                    }
-
-                } catch (err) {
-
-                    alert(
-                        "Network error. Please try again."
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-
-    if (closeBtn && modal) {
-
-        closeBtn.addEventListener(
-            'click',
-            () => {
-                modal.style.display = 'none';
-            }
-        );
 
     }
 
