@@ -49,10 +49,11 @@
     </header>
 
     <main>
-        
+
         <section id="home" class="hero-section">
             <div class="container">
                 <div class="hero-grid">
+
 
                     <div class="hero-text-col reveal-left">
                         <div class="hero-badge-row">
@@ -75,6 +76,7 @@
                             <span class="tag-highlight">scalable</span>, and <span
                                 class="tag-highlight">production-ready</span>.
                         </p>
+
 
                         <div class="dev-snapshot-card spotlight-card reveal-up delay-1">
                             <div class="snapshot-header">
@@ -175,6 +177,7 @@
                 <div class="ambient-glow"></div>
         </section>
 
+
         <section id="about" class="section-padding">
             <div class="container">
                 <div class="section-title-wrap reveal-up">
@@ -213,6 +216,7 @@
                             <div class="digital-id-card" id="interactiveCard" tabindex="0" role="button"
                                 aria-label="Click to flip digital card">
 
+
                                 <div class="card-face card-front">
                                     <div class="card-hologram-strip"></div>
                                     <div class="card-header-bar">
@@ -246,6 +250,7 @@
 
                                     </div>
                                 </div>
+
 
                                 <div class="card-face card-back">
                                     <div class="card-magnetic-bar"></div>
@@ -283,6 +288,7 @@
             </div>
         </section>
 
+
         <section id="projects" class="section-padding">
             <div class="container">
                 <div class="category-header-wrap reveal-up">
@@ -296,490 +302,574 @@
                     </div>
                 </div>
 
-                <div class="carousel-container reveal-up delay-1">
-                    <div class="works-grid adaptive-carousel">
-                        
-                        <div class="project-card project-card-featured spotlight-card" data-project="overtime">
+                <section id="projects" class="section-padding projects-section">
+                    <div class="container">
 
-                            <div class="card-preview">
-
-                                <img src="assets/Over-Time.png" alt="Over-Time OJT Tracker">
-
-                                <div class="live-project-badge">
-                                    <span></span>
-                                    LIVE
-                                </div>
-
-                                <a href="https://over-time-tracker.vercel.app/" target="_blank"
-                                    rel="noopener noreferrer" class="preview-overlay">
-                                    Open Live App →
-                                </a>
-
+                        <div class="category-header-wrap reveal-up">
+                            <div>
+                                <span class="section-kicker">// SELECTED WORK</span>
+                                <h2 class="section-heading">Featured Projects</h2>
                             </div>
 
-                            <div class="card-content">
+                            <div class="carousel-nav-controls">
+                                <button class="carousel-arrow prev-arrow" aria-label="Previous project">
+                                    ←
+                                </button>
 
-                                <div class="project-heading-row">
+                                <button class="carousel-arrow next-arrow" aria-label="Next project">
+                                    →
+                                </button>
+                            </div>
+                        </div>
 
+                        <div class="carousel-container reveal-up delay-1">
+                            <div class="works-grid adaptive-carousel">
+
+                                <!-- Over-Time -->
+                                <article class="project-card project-card-featured">
+
+                                    <div class="card-preview">
+                                        <img src="assets/OverTime.png" alt="Over-Time OJT Tracker">
+
+                                        <div class="live-project-badge">
+                                            <span></span>
+                                            LIVE
+                                        </div>
+
+                                        <a href="https://over-time-tracker.vercel.app/" target="_blank"
+                                            rel="noopener noreferrer" class="preview-overlay">
+                                            Open Live App ↗
+                                        </a>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="project-top-row">
+
+                                            <div>
+                                                <span class="project-type project-type-live">
+                                                    PRODUCTION BUILD
+                                                </span>
+
+                                                <h3 class="card-title">
+                                                    Over Time
+                                                </h3>
+                                            </div>
+
+                                            <div class="traction-counter">
+                                                <strong id="overtime-user-count">—</strong>
+                                                <span>Registered Users</span>
+                                            </div>
+
+                                        </div>
+
+                                        <p class="card-desc">
+                                            Progressive Web App for OJT students to manage
+                                            attendance, daily accomplishments, rendered internship
+                                            hours, reports, and supporting evidence across devices.
+                                        </p>
+
+                                        <div class="card-tag-row">
+                                            <span class="card-tag">JavaScript</span>
+                                            <span class="card-tag">Supabase</span>
+                                            <span class="card-tag">PostgreSQL</span>
+                                            <span class="card-tag">Vercel</span>
+                                            <span class="card-tag">PWA</span>
+                                        </div>
+
+                                        <div class="project-actions">
+                                            <a href="https://over-time-tracker.vercel.app/" target="_blank"
+                                                rel="noopener noreferrer" class="project-action">
+                                                Open App ↗
+                                            </a>
+
+                                            <span id="overtime-traction-status" class="project-meta traction-status">
+                                                Live user count
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- Queue-Pal -->
+                                <article class="project-card">
+
+                                    <div class="card-preview">
+                                        <img src="assets/Queue-pal.jpg" alt="Queue-Pal Mobile Application">
+
+                                        <a href="https://github.com/hvnmrk/Queue-Pal" target="_blank"
+                                            rel="noopener noreferrer" class="preview-overlay">
+                                            View Repository ↗
+                                        </a>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="project-top-row">
+
+                                            <div>
+                                                <span class="project-type">
+                                                    MOBILE APPLICATION
+                                                </span>
+
+                                                <h3 class="card-title">
+                                                    Queue-Pal
+                                                </h3>
+                                            </div>
+
+                                        </div>
+
+                                        <p class="card-desc">
+                                            Cross-platform mobile application built with Flutter
+                                            and Supabase to streamline recreational sports
+                                            management, open-play sessions, and dynamic court
+                                            queuing.
+                                        </p>
+
+                                        <div class="card-tag-row">
+                                            <span class="card-tag">Dart</span>
+                                            <span class="card-tag">Flutter</span>
+                                            <span class="card-tag">Supabase</span>
+                                            <span class="card-tag">PostgreSQL</span>
+                                        </div>
+
+                                        <div class="project-actions">
+                                            <a href="https://github.com/hvnmrk/Queue-Pal" target="_blank"
+                                                rel="noopener noreferrer" class="project-action">
+                                                View Repository ↗
+                                            </a>
+
+                                            <span class="project-meta">
+                                                Mobile App
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- CleanSweep -->
+                                <article class="project-card">
+
+                                    <div class="card-preview">
+                                        <img src="assets/cleansweep.jpg" alt="CleanSweep Advocacy Game">
+
+                                        <a href="https://clean-sweep-landing-page.vercel.app/" target="_blank"
+                                            rel="noopener noreferrer" class="preview-overlay">
+                                            View Project ↗
+                                        </a>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="project-top-row">
+
+                                            <div>
+                                                <span class="project-type">
+                                                    CAPSTONE PROJECT
+                                                </span>
+
+                                                <h3 class="card-title">
+                                                    CleanSweep
+                                                </h3>
+                                            </div>
+
+                                        </div>
+
+                                        <p class="card-desc">
+                                            Cooperative advocacy game designed to teach proper
+                                            waste segregation through multiplayer gameplay,
+                                            immediate feedback, and progressive challenges.
+                                        </p>
+
+                                        <div class="card-tag-row">
+                                            <span class="card-tag">Unity</span>
+                                            <span class="card-tag">C#</span>
+                                            <span class="card-tag">Photon PUN 2</span>
+                                            <span class="card-tag">Multiplayer</span>
+                                        </div>
+
+                                        <div class="project-actions">
+                                            <a href="https://clean-sweep-landing-page.vercel.app/" target="_blank"
+                                                rel="noopener noreferrer" class="project-action">
+                                                View Project ↗
+                                            </a>
+
+                                            <span class="project-meta">
+                                                Capstone
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- Big J -->
+                                <article class="project-card">
+
+                                    <div class="card-preview">
+                                        <img src="assets/bigj.png" alt="Big J Store">
+
+                                        <a href="https://www.figma.com/proto/u3kpMfiMowgjjhKNxmIbAZ/FinalBigJ?node-id=0-1&t=xKHRf4FBxbcVnSpt-1"
+                                            target="_blank" rel="noopener noreferrer" class="preview-overlay">
+                                            View Platform ↗
+                                        </a>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="project-top-row">
+
+                                            <div>
+                                                <span class="project-type">
+                                                    WEB PLATFORM
+                                                </span>
+
+                                                <h3 class="card-title">
+                                                    bigj.store
+                                                </h3>
+                                            </div>
+
+                                        </div>
+
+                                        <p class="card-desc">
+                                            Supply-chain e-commerce web platform for industrial
+                                            steel fabrication with automated quote computation,
+                                            relational catalog querying, and dynamic product
+                                            showcasing.
+                                        </p>
+
+                                        <div class="card-tag-row">
+                                            <span class="card-tag">HTML</span>
+                                            <span class="card-tag">CSS</span>
+                                            <span class="card-tag">JavaScript</span>
+                                            <span class="card-tag">PHP</span>
+                                            <span class="card-tag">MySQL</span>
+                                        </div>
+
+                                        <div class="project-actions">
+                                            <a href="https://www.figma.com/proto/u3kpMfiMowgjjhKNxmIbAZ/FinalBigJ?node-id=0-1&t=xKHRf4FBxbcVnSpt-1"
+                                                target="_blank" rel="noopener noreferrer" class="project-action">
+                                                View Platform ↗
+                                            </a>
+
+                                            <span class="project-meta">
+                                                Web Platform
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- ARTA -->
+                                <article class="project-card">
+
+                                    <div class="card-preview">
+                                        <img src="assets/arta.png" alt="ARTA Client Satisfaction System">
+
+                                        <a href="https://github.com/hvnmrk" target="_blank" rel="noopener noreferrer"
+                                            class="preview-overlay">
+                                            View Repository ↗
+                                        </a>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="project-top-row">
+
+                                            <div>
+                                                <span class="project-type">
+                                                    WEB SYSTEM
+                                                </span>
+
+                                                <h3 class="card-title">
+                                                    ARTA Client Satisfaction
+                                                </h3>
+                                            </div>
+
+                                        </div>
+
+                                        <p class="card-desc">
+                                            Feedback analytics portal aligned with Anti-Red Tape
+                                            Authority benchmarks featuring QR-based access,
+                                            verified responses, and administrative reporting.
+                                        </p>
+
+                                        <div class="card-tag-row">
+                                            <span class="card-tag">PHP</span>
+                                            <span class="card-tag">MySQL</span>
+                                            <span class="card-tag">Tailwind CSS</span>
+                                            <span class="card-tag">QR Workflow</span>
+                                        </div>
+
+                                        <div class="project-actions">
+                                            <a href="https://github.com/hvnmrk" target="_blank"
+                                                rel="noopener noreferrer" class="project-action">
+                                                View Repository ↗
+                                            </a>
+
+                                            <span class="project-meta">
+                                                Web System
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- SalesPredictor -->
+                                <article class="project-card">
+
+                                    <div class="card-preview">
+                                        <img src="assets/mml.png" alt="SalesPredictor Machine Learning Project">
+
+                                        <a href="https://github.com/stephx6/Demand-Rank-Website.git" target="_blank"
+                                            rel="noopener noreferrer" class="preview-overlay">
+                                            View Repository ↗
+                                        </a>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="project-top-row">
+
+                                            <div>
+                                                <span class="project-type">
+                                                    MACHINE LEARNING
+                                                </span>
+
+                                                <h3 class="card-title">
+                                                    SalesPredictor
+                                                </h3>
+                                            </div>
+
+                                        </div>
+
+                                        <p class="card-desc">
+                                            Predictive analytics dashboard estimating
+                                            top-selling product demand using linear regression
+                                            and model evaluation metrics including MAE and R².
+                                        </p>
+
+                                        <div class="card-tag-row">
+                                            <span class="card-tag">Machine Learning</span>
+                                            <span class="card-tag">Regression</span>
+                                            <span class="card-tag">Analytics</span>
+                                            <span class="card-tag">Data</span>
+                                        </div>
+
+                                        <div class="project-actions">
+                                            <a href="https://github.com/stephx6/Demand-Rank-Website.git" target="_blank"
+                                                rel="noopener noreferrer" class="project-action">
+                                                View Repository ↗
+                                            </a>
+
+                                            <span class="project-meta">
+                                                ML Project
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="experience" class="section-padding">
+                    <div class="container">
+                        <div class="section-title-wrap reveal-up">
+                            <span class="section-kicker">// MILESTONES & LEADERSHIP</span>
+                            <h2 class="section-heading">Project & Industry Experience</h2>
+                        </div>
+
+                        <div class="timeline-stack reveal-up delay-1">
+                            <div class="timeline-card spotlight-card">
+                                <div class="card-timeline-header">
                                     <div>
+                                        <h3 class="timeline-role">IT Infrastructure & Support</h3>
 
-                                        <span class="production-label">
-                                            PRODUCTION BUILD
-                                        </span>
-
-                                        <h3 class="card-title">
-                                            Over-Time
-                                        </h3>
+                                        <p class="timeline-org">Our Lady of Fatima University Valenzuela (Intership)</p>
 
                                     </div>
+                                    <span class="timeline-year">2026 — PRESENT</span>
+                                </div>
+                                <p class="timeline-text">
 
-                                    <div class="traction-counter">
-
-                                        <strong id="overtime-user-count">
-                                            —
-                                        </strong>
-
-                                        <span>
-                                            registered users
-                                        </span>
-
+                                    Providing end-user technical support, diagnosing hardware and software bottlenecks,
+                                    and
+                                    configuring basic local network environments to ensure system uptime.
+                                </p>
+                            </div>
+                            <div class="timeline-card spotlight-card">
+                                <div class="card-timeline-header">
+                                    <div>
+                                        <h3 class="timeline-role">Project Lead & Lead Mobile Engineer</h3>
+                                        <p class="timeline-org">Clean Sweep (Capstone Project)</p>
                                     </div>
-
+                                    <span class="timeline-year">2025 — PRESENT</span>
                                 </div>
-
-                                <p class="card-desc">
-
-                                    Progressive Web App built for OJT students
-                                    to manage attendance, daily accomplishments,
-                                    rendered internship hours and supporting
-                                    evidence across devices.
-
+                                <p class="timeline-text">
+                                    Directing application architecture, sprint pipelines, state management strategies,
+                                    and
+                                    frontend view layers for a cross-platform ecological waste classification mobile
+                                    app.
                                 </p>
+                            </div>
 
-                                <div class="project-proof-grid">
-
-                                    <div class="project-proof">
-                                        <strong>Supabase</strong>
-                                        <span>Backend</span>
+                            <div class="timeline-card spotlight-card">
+                                <div class="card-timeline-header">
+                                    <div>
+                                        <h3 class="timeline-role">Lead Web Engineer</h3>
+                                        <p class="timeline-org">BigJ Steel Fabrication</p>
                                     </div>
+                                    <span class="timeline-year">2024</span>
+                                </div>
+                                <p class="timeline-text">
+                                    Engineered custom backend schemas, customer quote calculations, and product showcase
+                                    flows
+                                    for industrial steel construction inquiries.
+                                </p>
+                            </div>
 
-                                    <div class="project-proof">
+                        </div>
+                    </div>
+                </section>
 
-                                        <strong>
-                                            PWA
-                                        </strong>
 
-                                        <span>
-                                            Installable
-                                        </span>
+                <section id="certificates" class="section-padding">
+                    <div class="container">
+                        <div class="section-title-wrap reveal-up">
+                            <span class="section-kicker">// CISCO INFRASTRUCTURE FOUNDATIONS</span>
+                            <h2 class="section-heading">Network & Systems Badges</h2>
+                        </div>
 
+                        <div class="cert-stack reveal-up delay-1">
+                            <div class="cert-row">
+                                <span class="cert-year">2026</span>
+                                <div class="cert-info">
+                                    <h4>Frontend Developer Career Roadmap</h4>
+                                    <p class="text-secondary">Issued by BreakPoint Labs • React, JavaScript, HTML/CSS &
+                                        Git
+
+                                    </p>
+                                </div>
+                                <a href="assets/BreakLabsFrontEnd.png" target="_blank" rel="noopener" class="cert-link">
+                                    View Certificate &rarr;
+                                </a>
+                            </div>
+                            <div class="cert-row">
+                                <span class="cert-year">2025</span>
+                                <div class="cert-info">
+                                    <h4>Network Support and Security</h4>
+                                    <p class="text-secondary">Issued by Cisco Credentialing • Protocol Isolation &
+                                        Traffic
+                                        Hardening</p>
+                                </div>
+                                <a href="https://www.credly.com/badges/ee14dda0-a4f9-4057-ada1-342f13bb75c2"
+                                    target="_blank" rel="noopener" class="cert-link">Verify &rarr;</a>
+                            </div>
+                            <div class="cert-row">
+                                <span class="cert-year">2025</span>
+                                <div class="cert-info">
+                                    <h4>Networking Basics</h4>
+                                    <p class="text-secondary">Issued by Cisco Credentialing • TCP/IP, OSI Layers &
+                                        Packet
+                                        Routing</p>
+                                </div>
+                                <a href="https://www.credly.com/badges/be168498-9a7a-43eb-9ce9-581c54ed4082"
+                                    target="_blank" rel="noopener" class="cert-link">Verify &rarr;</a>
+                            </div>
+                            <div class="cert-row">
+                                <span class="cert-year">2025</span>
+                                <div class="cert-info">
+                                    <h4>Networking Devices and Initial Configuration</h4>
+                                    <p class="text-secondary">Issued by Cisco Credentialing • Router & Switch
+                                        Fundamentals </p>
+                                </div>
+                                <a href="https://www.credly.com/badges/5170fb1d-3f39-49b5-8940-b63f49623052"
+                                    target="_blank" rel="noopener" class="cert-link">Verify &rarr;</a>
+                            </div>
+                            <div class="cert-row">
+                                <span class="cert-year">2025</span>
+                                <div class="cert-info">
+                                    <h4>Network Addressing and Basic Troubleshooting</h4>
+                                    <p class="text-secondary">Issued by Cisco Credentialing • Subnetting, IPv4/IPv6 &
+                                        Connectivity Diagnostics</p>
+                                </div>
+                                <a href="https://www.credly.com/badges/4cb36926-5e14-4dd2-a9ea-f0436b3eb674"
+                                    target="_blank" rel="noopener" class="cert-link">Verify &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section id="contact" class="section-padding">
+                    <div class="container">
+                        <div class="contact-grid">
+
+                            <div class="contact-info-pane reveal-left">
+                                <span class="section-kicker">// GET IN TOUCH</span>
+                                <h2 class="section-heading">Let's Connect</h2>
+                                <p class="text-secondary" style="margin-bottom: 24px;">
+                                    I am open to associate software engineering roles, internships, and collaborative
+                                    development projects.
+                                </p>
+
+                                <div class="contact-card-box spotlight-card">
+
+                                    <div class="contact-row">
+                                        <span class="mono-prefix">GitHub:</span>
+                                        <a href="https://github.com/hvnmrk" target="_blank" rel="noopener"
+                                            class="contact-val">github.com/hvnmrk</a>
                                     </div>
-
-                                    <div class="project-proof">
-
-                                        <strong>
-                                            Live
-                                        </strong>
-
-                                        <span>
-                                            Deployment
-                                        </span>
-
+                                    <div class="contact-row">
+                                        <span class="mono-prefix">LinkedIn:</span>
+                                        <a href="https://www.linkedin.com/in/mark-tomaquin-2996b2260/" target="_blank"
+                                            rel="noopener" class="contact-val">linkedin.com/in/mark-tomaquin</a>
                                     </div>
-
+                                    <div class="contact-row">
+                                        <span class="mono-prefix">Location:</span>
+                                        <span class="contact-val text-themed">Valenzuela City, Philippines</span>
+                                    </div>
                                 </div>
-
-                                <div class="card-tag-row">
-
-                                    <span class="card-tag">
-                                        JavaScript
-                                    </span>
-
-                                    <span class="card-tag">
-                                        Supabase
-                                    </span>
-
-                                    <span class="card-tag">
-                                        PostgreSQL
-                                    </span>
-
-                                    <span class="card-tag">
-                                        Vercel
-                                    </span>
-
-                                    <span class="card-tag">
-                                        PWA
-                                    </span>
-
-                                </div>
-
-                                <div class="project-actions">
-
-                                    <a href="https://over-time-tracker.vercel.app/" target="_blank"
-                                        rel="noopener noreferrer" class="project-action primary">
-                                        Open App ↗
-                                    </a>
-
-                                    <span id="overtime-traction-status" class="traction-status">
-                                        Loading live traction…
-                                    </span>
-
-                                </div>
-
                             </div>
 
-                        </div>
-                        
-                        <div class="project-card spotlight-card">
-                            <div class="card-preview">
-                                <img src="assets/Queue-pal.jpg" alt="Queue-Pal System">
-                                <a href="https://github.com/hvnmrk/Queue-Pal" target="_blank" rel="noopener"
-                                    class="preview-overlay">
-                                    View Source Code &rarr;
-                                </a>
+                            <div class="contact-form-pane reveal-right delay-1">
+                                <form id="contact-form" class="clean-form spotlight-card">
+                                    <div class="form-group">
+                                        <label for="name">NAME</label>
+                                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">EMAIL</label>
+                                        <input type="email" id="email" name="email" placeholder="Enter your email"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">MESSAGE</label>
+                                        <textarea id="message" name="message" rows="4" placeholder="Enter your message"
+                                            required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message
+                                        &rarr;</button>
+                                </form>
                             </div>
-                            <div class="card-content">
-                                <div class="card-tag-row">
-                                    <span class="card-tag">Dart</span>
-                                    <span class="card-tag">PostgreSQL</span>
 
-                                </div>
-                                <h3 class="card-title">Queue-Pal</h3>
-                                <p class="card-desc">
-                                    is a cross-platform mobile application built with Flutter and Supabase designed to
-                                    streamline recreational sports management, open play sessions, and dynamic court
-                                    queuing.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card spotlight-card">
-                            <div class="card-preview">
-                                <img src="assets/cleansweep.jpg" alt="Clean Sweep App">
-                                <a href="https://clean-sweep-landing-page.vercel.app/" target="_blank" rel="noopener"
-                                    class="preview-overlay">
-                                    Landing Page &rarr;
-                                </a>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-tag-row">
-                                    <span class="card-tag">Mobile App</span>
-
-                                </div>
-                                <h3 class="card-title">Clean Sweep (Capstone)</h3>
-                                <p class="card-desc">
-                                    Gamified mobile application integrating interactive touch-control feedback loops to
-                                    educate and teach proper ecological waste segregation.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="project-card spotlight-card">
-                            <div class="card-preview">
-                                <img src="assets/bigj.png" alt="bigj.store Platform">
-                                <a href="https://www.figma.com/proto/u3kpMfiMowgjjhKNxmIbAZ/FinalBigJ?node-id=0-1&t=xKHRf4FBxbcVnSpt-1"
-                                    target="_blank" rel="noopener" class="preview-overlay">
-                                    View Platform Demo &rarr;
-                                </a>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-tag-row">
-                                    <span class="card-tag">HTML</span>
-                                    <span class="card-tag">MySQL</span>
-                                    <span class="card-tag">JavaScript</span>
-                                    <span class="card-tag">PHP</span>
-                                </div>
-                                <h3 class="card-title">bigj.store</h3>
-                                <p class="card-desc">
-                                    Supply-chain e-commerce web platform engineered for industrial steel fabrication
-                                    with automated quote computations, relational catalog querying, and dynamic product
-                                    showcase.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="project-card spotlight-card">
-                            <div class="card-preview">
-                                <img src="assets/arta.png" alt="ARTA System">
-                                <a href="https://github.com/hvnmrk" target="_blank" rel="noopener"
-                                    class="preview-overlay">
-                                    View Repository &rarr;
-                                </a>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-tag-row">
-                                    <span class="card-tag">PHP</span>
-                                    <span class="card-tag">MySQL</span>
-                                    <span class="card-tag">Tailwind CSS</span>
-                                </div>
-                                <h3 class="card-title">ARTA Client Satisfaction System</h3>
-                                <p class="card-desc">
-                                    Feedback analytics portal aligned with Anti-Red Tape Authority benchmarks for
-                                    Valenzuela City, featuring automated QR token generation and verified
-                                    responses.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="project-card spotlight-card">
-                            <div class="card-preview">
-                                <img src="assets/mml.png" alt="SalesPredictor ML">
-                                <a href="https://github.com/stephx6/Demand-Rank-Website.git" target="_blank"
-                                    rel="noopener" class="preview-overlay">
-                                    View Source Code &rarr;
-                                </a>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-tag-row">
-
-                                    <span class="card-tag">Machine Learning</span>
-                                </div>
-                                <h3 class="card-title">SalesPredictor ML</h3>
-                                <p class="card-desc">
-                                    Predictive analytics dashboard estimating top-selling product demands using linear
-                                    regression with model performance metrics (MAE, R² score).
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section-padding">
-            <div class="container">
-                <div class="section-title-wrap reveal-up">
-                    <span class="section-kicker">// TOOLSET & RUNTIME</span>
-                    <h2 class="section-heading">Technologies & Frameworks</h2>
-                </div>
-
-                <div class="skills-grid reveal-up delay-1">
-                    <div class="skill-category-card spotlight-card">
-                        <span class="category-label">// LANGUAGES & FRAMEWORKS</span>
-                        <div class="pill-cloud">
-                            <span class="tech-pill"><i class="devicon-dart-plain colored"></i> Dart</span>
-
-                            <span class="tech-pill"><i class="devicon-php-plain colored"></i> PHP</span>
-                            <span class="tech-pill"><i class="devicon-react-plain colored"></i> React</span>
-                            <span class="tech-pill"><i class="devicon-javascript-plain colored"></i> JavaScript
-                            </span>
-                            <span class="tech-pill"><i class="devicon-java-plain colored"></i> Java</span>
-                            <span class="tech-pill"><i class="devicon-html5-plain colored"></i> HTML5</span>
-                            <span class="tech-pill"><i class="devicon-css3-plain colored"></i> CSS3</span>
-                            <span class="tech-pill"><i class="devicon-flutter-plain colored"></i> Flutter</span>
                         </div>
                     </div>
-
-                    <div class="skill-category-card spotlight-card">
-                        <span class="category-label">// TOOLS & DEVOPS</span>
-                        <div class="pill-cloud">
-                            <span class="tech-pill"><i class="devicon-github-original"></i> GitHub</span>
-
-                            <span class="tech-pill"><i class="devicon-vscode-plain colored"></i> VS Code</span>
-                            <span class="tech-pill"><i class="devicon-visualstudio-plain colored"></i> Visual
-                                Studio</span>
-                            <span class="tech-pill"><i class="devicon-androidstudio-plain colored"></i> Android
-                                Studio</span>
-                            <span class="tech-pill"><i class="devicon-xampp-plain colored"></i> XAMPP</span>
-                        </div>
-                    </div>
-                    <div class="skill-category-card spotlight-card">
-                        <span class="category-label">// BACKEND & DATABASES</span>
-                        <div class="pill-cloud">
-                            <span class="tech-pill">
-                                <i class="devicon-postman-plain colored"></i>
-                                REST APIs
-                            </span> <span class="tech-pill"><i class="devicon-github-original"></i>
-                                GitHub</span>
-
-                            <span class="tech-pill"><i class="devicon-mysql-original colored"></i> MySQL</span>
-                            <span class="tech-pill">
-                                <i class="devicon-postgresql-plain colored"></i>
-                                PostgreSQL
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-
-        </section>
-
-        <section id="experience" class="section-padding">
-            <div class="container">
-                <div class="section-title-wrap reveal-up">
-                    <span class="section-kicker">// MILESTONES & LEADERSHIP</span>
-                    <h2 class="section-heading">Project & Industry Experience</h2>
-                </div>
-
-                <div class="timeline-stack reveal-up delay-1">
-                    <div class="timeline-card spotlight-card">
-                        <div class="card-timeline-header">
-                            <div>
-                                <h3 class="timeline-role">IT Infrastructure & Support</h3>
-
-                                <p class="timeline-org">Our Lady of Fatima University Valenzuela (Intership)</p>
-
-                            </div>
-                            <span class="timeline-year">2026 — PRESENT</span>
-                        </div>
-                        <p class="timeline-text">
-
-                            Providing end-user technical support, diagnosing hardware and software bottlenecks, and
-                            configuring basic local network environments to ensure system uptime.
-                        </p>
-                    </div>
-                    <div class="timeline-card spotlight-card">
-                        <div class="card-timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Project Lead & Lead Mobile Engineer</h3>
-                                <p class="timeline-org">Clean Sweep (Capstone Project)</p>
-                            </div>
-                            <span class="timeline-year">2025 — PRESENT</span>
-                        </div>
-                        <p class="timeline-text">
-                            Directing application architecture, sprint pipelines, state management strategies, and
-                            frontend view layers for a cross-platform ecological waste classification mobile app.
-                        </p>
-                    </div>
-
-                    <div class="timeline-card spotlight-card">
-                        <div class="card-timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Lead Web Engineer</h3>
-                                <p class="timeline-org">BigJ Steel Fabrication</p>
-                            </div>
-                            <span class="timeline-year">2024</span>
-                        </div>
-                        <p class="timeline-text">
-                            Engineered custom backend schemas, customer quote calculations, and product showcase flows
-                            for industrial steel construction inquiries.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="certificates" class="section-padding">
-            <div class="container">
-                <div class="section-title-wrap reveal-up">
-                    <span class="section-kicker">// CISCO INFRASTRUCTURE FOUNDATIONS</span>
-                    <h2 class="section-heading">Network & Systems Badges</h2>
-                </div>
-
-                <div class="cert-stack reveal-up delay-1">
-                    <div class="cert-row">
-                        <span class="cert-year">2026</span>
-                        <div class="cert-info">
-                            <h4>Frontend Developer Career Roadmap</h4>
-                            <p class="text-secondary">Issued by BreakPoint Labs • React, JavaScript, HTML/CSS & Git
-
-                            </p>
-                        </div>
-                        <a href="assets/BreakLabsFrontEnd.png" target="_blank" rel="noopener" class="cert-link">
-                            View Certificate &rarr;
-                        </a>
-                    </div>
-                    <div class="cert-row">
-                        <span class="cert-year">2025</span>
-                        <div class="cert-info">
-                            <h4>Network Support and Security</h4>
-                            <p class="text-secondary">Issued by Cisco Credentialing • Protocol Isolation & Traffic
-                                Hardening</p>
-                        </div>
-                        <a href="https://www.credly.com/badges/ee14dda0-a4f9-4057-ada1-342f13bb75c2" target="_blank"
-                            rel="noopener" class="cert-link">Verify &rarr;</a>
-                    </div>
-                    <div class="cert-row">
-                        <span class="cert-year">2025</span>
-                        <div class="cert-info">
-                            <h4>Networking Basics</h4>
-                            <p class="text-secondary">Issued by Cisco Credentialing • TCP/IP, OSI Layers & Packet
-                                Routing</p>
-                        </div>
-                        <a href="https://www.credly.com/badges/be168498-9a7a-43eb-9ce9-581c54ed4082" target="_blank"
-                            rel="noopener" class="cert-link">Verify &rarr;</a>
-                    </div>
-                    <div class="cert-row">
-                        <span class="cert-year">2025</span>
-                        <div class="cert-info">
-                            <h4>Networking Devices and Initial Configuration</h4>
-                            <p class="text-secondary">Issued by Cisco Credentialing • Router & Switch Fundamentals </p>
-                        </div>
-                        <a href="https://www.credly.com/badges/5170fb1d-3f39-49b5-8940-b63f49623052" target="_blank"
-                            rel="noopener" class="cert-link">Verify &rarr;</a>
-                    </div>
-                    <div class="cert-row">
-                        <span class="cert-year">2025</span>
-                        <div class="cert-info">
-                            <h4>Network Addressing and Basic Troubleshooting</h4>
-                            <p class="text-secondary">Issued by Cisco Credentialing • Subnetting, IPv4/IPv6 &
-                                Connectivity Diagnostics</p>
-                        </div>
-                        <a href="https://www.credly.com/badges/4cb36926-5e14-4dd2-a9ea-f0436b3eb674" target="_blank"
-                            rel="noopener" class="cert-link">Verify &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section-padding">
-            <div class="container">
-                <div class="contact-grid">
-
-                    <div class="contact-info-pane reveal-left">
-                        <span class="section-kicker">// GET IN TOUCH</span>
-                        <h2 class="section-heading">Let's Connect</h2>
-                        <p class="text-secondary" style="margin-bottom: 24px;">
-                            I am open to associate software engineering roles, internships, and collaborative
-                            development projects.
-                        </p>
-
-                        <div class="contact-card-box spotlight-card">
-
-                            <div class="contact-row">
-                                <span class="mono-prefix">GitHub:</span>
-                                <a href="https://github.com/hvnmrk" target="_blank" rel="noopener"
-                                    class="contact-val">github.com/hvnmrk</a>
-                            </div>
-                            <div class="contact-row">
-                                <span class="mono-prefix">LinkedIn:</span>
-                                <a href="https://www.linkedin.com/in/mark-tomaquin-2996b2260/" target="_blank"
-                                    rel="noopener" class="contact-val">linkedin.com/in/mark-tomaquin</a>
-                            </div>
-                            <div class="contact-row">
-                                <span class="mono-prefix">Location:</span>
-                                <span class="contact-val text-themed">Valenzuela City, Philippines</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-form-pane reveal-right delay-1">
-                        <form id="contact-form" class="clean-form spotlight-card">
-                            <div class="form-group">
-                                <label for="name">NAME</label>
-                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">EMAIL</label>
-                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">MESSAGE</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Enter your message"
-                                    required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message
-                                &rarr;</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+                </section>
     </main>
 
     <footer>
